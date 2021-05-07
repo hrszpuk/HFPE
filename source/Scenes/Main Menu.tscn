@@ -1,0 +1,41 @@
+[gd_scene format=2]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1022.0
+margin_bottom = 599.0
+color = Color( 0.180392, 0.180392, 0.180392, 1 )
+
+[node name="EditCurrentFileButton" type="Button" parent="."]
+margin_left = 318.0
+margin_top = 152.0
+margin_right = 718.0
+margin_bottom = 227.0
+rect_pivot_offset = Vector2( 177, 37.5 )
+text = "Edit Current Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImportFileButton" type="Button" parent="."]
+margin_left = 318.0
+margin_top = 237.0
+margin_right = 718.0
+margin_bottom = 312.0
+text = "Import Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateFileButton" type="Button" parent="."]
+margin_left = 319.0
+margin_top = 323.0
+margin_right = 719.0
+margin_bottom = 398.0
+text = "Create New Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
