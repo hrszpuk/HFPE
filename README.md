@@ -1,2 +1,2 @@
-# Hyperfight Config Editor (HFCE)
-This is a piece of software written in the Godot Engine (Using GDscript) to eidt the hyperfight config files.
+# Hyperfight Palette Editor (HFPE)
+This is a piece of software written in the Godot Engine (Using GDscript) to edit hyperfight palette files.
