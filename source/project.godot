@@ -17,6 +17,10 @@ run/main_scene="res://Scenes/Main Menu.tscn"
 run/low_processor_mode=true
 config/icon="res://Assets/logo.png"
 
+[autoload]
+
+global="*res://global.gd"
+
 [display]
 
 window/size/resizable=false

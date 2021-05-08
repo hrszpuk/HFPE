@@ -11,8 +11,9 @@ __meta__ = {
 }
 
 [node name="Background" type="ColorRect" parent="."]
+margin_left = -1.25995
 margin_top = 1.0
-margin_right = 1024.0
+margin_right = 1022.74
 margin_bottom = 601.0
 color = Color( 0.180392, 0.180392, 0.180392, 1 )
 __meta__ = {
@@ -26,6 +27,7 @@ margin_right = 962.0
 margin_bottom = 522.0
 items = [ "Shoto Goto", null, false ]
 fixed_column_width = 1
+icon_scale = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,9 +44,9 @@ __meta__ = {
 
 [node name="EditButton" type="Button" parent="."]
 margin_left = 543.0
-margin_top = 59.0
+margin_top = 57.7401
 margin_right = 619.0
-margin_bottom = 101.0
+margin_bottom = 99.7401
 rect_pivot_offset = Vector2( 59, 21 )
 text = "Edit"
 __meta__ = {
@@ -135,5 +137,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="SaveMenuButton" to="." method="_on_SaveMenuButton_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

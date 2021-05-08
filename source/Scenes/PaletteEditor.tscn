@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/proj/goto/super.png" type="Texture" id=1]
 [ext_resource path="res://Assets/char/goto/idle.png" type="Texture" id=2]
 [ext_resource path="res://Assets/proj/goto/attack.png" type="Texture" id=3]
+[ext_resource path="res://Assets/portrait/kero.png" type="Texture" id=4]
+[ext_resource path="res://Assets/portrait/goto.png" type="Texture" id=5]
+[ext_resource path="res://Assets/portrait/time.png" type="Texture" id=6]
+[ext_resource path="res://Assets/portrait/yoyo.png" type="Texture" id=7]
 
 [sub_resource type="Theme" id=1]
 
@@ -77,15 +81,6 @@ scale = Vector2( 4.9375, 4.625 )
 texture = ExtResource( 1 )
 hframes = 4
 
-[node name="AnimationButton" type="OptionButton" parent="."]
-margin_left = 161.0
-margin_top = 386.0
-margin_right = 310.0
-margin_bottom = 425.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CharacterFlipped" type="CheckButton" parent="."]
 margin_left = 78.0
 margin_top = 386.0
@@ -108,10 +103,23 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 701.0
-margin_top = 31.0
-margin_right = 1009.0
-margin_bottom = 493.0
+margin_left = 705.0
+margin_top = 35.0
+margin_right = 1013.0
+margin_bottom = 497.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSelect" type="OptionButton" parent="."]
+margin_left = 160.0
+margin_top = 388.0
+margin_right = 308.0
+margin_bottom = 427.0
+text = "Shoto Goto"
+icon = ExtResource( 5 )
+items = [ "Shoto Goto", ExtResource( 5 ), false, 0, null, "Yo Yona", ExtResource( 7 ), false, 1, null, "Dr. Kero", ExtResource( 4 ), false, 2, null, "Don McRon", ExtResource( 6 ), false, 3, null ]
+selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

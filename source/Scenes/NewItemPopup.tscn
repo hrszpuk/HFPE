@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/portrait/goto.png" type="Texture" id=1]
+[ext_resource path="res://Assets/portrait/kero.png" type="Texture" id=2]
+[ext_resource path="res://Assets/portrait/time.png" type="Texture" id=3]
+[ext_resource path="res://Assets/portrait/yoyo.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/NewItemPopup.gd" type="Script" id=5]
+
+[node name="NewItemPopup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.35675
+margin_top = 5.0787
+margin_right = 6.35669
+margin_bottom = 5.07874
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 396.02
+margin_top = 159.225
+margin_right = 636.02
+margin_bottom = 344.225
+color = Color( 0.117647, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameInput" type="LineEdit" parent="."]
+margin_left = 438.15
+margin_top = 207.273
+margin_right = 583.15
+margin_bottom = 231.273
+text = "Enter name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 419.793
+margin_top = 175.522
+margin_right = 604.793
+margin_bottom = 202.522
+text = "New Character Palette Dialog"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSelect" type="OptionButton" parent="."]
+margin_left = 441.02
+margin_top = 243.106
+margin_right = 582.02
+margin_bottom = 273.106
+text = "Shoto Goto"
+icon = ExtResource( 1 )
+items = [ "Shoto Goto", ExtResource( 1 ), false, 0, null, "Yo Yona", ExtResource( 4 ), false, 1, null, "Dr. Kero", ExtResource( 2 ), false, 2, null, "Don McRon", ExtResource( 3 ), false, 3, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OkayButton" type="Button" parent="."]
+margin_left = 514.99
+margin_top = 303.387
+margin_right = 582.99
+margin_bottom = 327.387
+text = "Okay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 440.396
+margin_top = 303.842
+margin_right = 502.396
+margin_bottom = 328.842
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="OkayButton" to="." method="_on_OkayButton_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
