@@ -1,0 +1,139 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/PaletteFileManager.gd" type="Script" id=1]
+
+[node name="PaletteFileManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_top = 1.0
+margin_right = 1024.0
+margin_bottom = 601.0
+color = Color( 0.180392, 0.180392, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 637.0
+margin_top = 55.0
+margin_right = 962.0
+margin_bottom = 522.0
+items = [ "Shoto Goto", null, false ]
+fixed_column_width = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainLabel" type="Label" parent="."]
+margin_left = 29.0
+margin_top = 36.0
+margin_right = 188.0
+margin_bottom = 50.0
+text = "Palette File Manager"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditButton" type="Button" parent="."]
+margin_left = 543.0
+margin_top = 59.0
+margin_right = 619.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 59, 21 )
+text = "Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewButton" type="Button" parent="."]
+margin_left = 544.0
+margin_top = 119.0
+margin_right = 620.0
+margin_bottom = 161.0
+rect_pivot_offset = Vector2( 59, 21 )
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 545.0
+margin_top = 178.0
+margin_right = 621.0
+margin_bottom = 220.0
+text = "Delete"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverallInfographic" type="TextEdit" parent="."]
+margin_left = 29.0
+margin_top = 92.0
+margin_right = 313.0
+margin_bottom = 346.0
+text = "Total Number of Palettes: 0
+etc..."
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentInfographic" type="TextEdit" parent="."]
+margin_left = 34.0
+margin_top = 361.0
+margin_right = 314.0
+margin_bottom = 475.0
+text = "Current Palette:
+Index:
+Character:
+etc..."
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveMenuButton" type="Button" parent="."]
+margin_left = 37.0
+margin_top = 507.0
+margin_right = 132.0
+margin_bottom = 557.0
+text = "Save"
+
+[node name="ExportMenuButton" type="Button" parent="."]
+margin_left = 149.0
+margin_top = 508.0
+margin_right = 246.0
+margin_bottom = 558.0
+text = "Export"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 356.0
+margin_top = 507.0
+margin_right = 450.0
+margin_bottom = 557.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteMenuButton" type="Button" parent="."]
+margin_left = 473.0
+margin_top = 507.0
+margin_right = 568.0
+margin_bottom = 558.0
+text = "Delete File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

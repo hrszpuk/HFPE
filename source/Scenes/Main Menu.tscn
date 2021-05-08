@@ -1,13 +1,19 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 1022.0
 margin_bottom = 599.0
 color = Color( 0.180392, 0.180392, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EditCurrentFileButton" type="Button" parent="."]
 margin_left = 318.0
@@ -39,3 +45,5 @@ text = "Create New Palette File"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
