@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/proj/goto/super.png" type="Texture" id=1]
 [ext_resource path="res://Assets/char/goto/idle.png" type="Texture" id=2]
@@ -7,12 +7,312 @@
 [ext_resource path="res://Assets/portrait/goto.png" type="Texture" id=5]
 [ext_resource path="res://Assets/portrait/time.png" type="Texture" id=6]
 [ext_resource path="res://Assets/portrait/yoyo.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/PaletteEditor.gd" type="Script" id=8]
 
 [sub_resource type="Theme" id=1]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 OLDCOLOR0 : hint_color;
+uniform vec4 NEWCOLOR0 : hint_color;
+
+uniform vec4 OLDCOLOR1 : hint_color;
+uniform vec4 NEWCOLOR1 : hint_color;
+
+uniform vec4 OLDCOLOR2 : hint_color;
+uniform vec4 NEWCOLOR2 : hint_color;
+
+uniform vec4 OLDCOLOR3 : hint_color;
+uniform vec4 NEWCOLOR3 : hint_color;
+
+uniform vec4 OLDCOLOR4 : hint_color;
+uniform vec4 NEWCOLOR4 : hint_color;
+
+uniform vec4 OLDCOLOR5 : hint_color;
+uniform vec4 NEWCOLOR5 : hint_color;
+
+uniform vec4 OLDCOLOR6 : hint_color;
+uniform vec4 NEWCOLOR6 : hint_color;
+
+uniform vec4 OLDCOLOR7 : hint_color;
+uniform vec4 NEWCOLOR7 : hint_color;
+
+uniform vec4 OLDCOLOR8 : hint_color;
+uniform vec4 NEWCOLOR8 : hint_color;
+
+uniform vec4 OLDCOLOR9 : hint_color;
+uniform vec4 NEWCOLOR9 : hint_color;
+
+uniform vec4 OLDCOLOR10 : hint_color;
+uniform vec4 NEWCOLOR10 : hint_color;
+
+uniform vec4 OLDCOLOR11 : hint_color;
+uniform vec4 NEWCOLOR11 : hint_color;
+
+uniform vec4 OLDCOLOR12 : hint_color;
+uniform vec4 NEWCOLOR12 : hint_color;
+
+uniform vec4 OLDCOLOR13 : hint_color;
+uniform vec4 NEWCOLOR13 : hint_color;
+
+const float precision = 0.01;
+
+void fragment() {
+	vec4 current_pixel = texture(TEXTURE, UV);
+	
+	if (distance(current_pixel, OLDCOLOR0) <= precision) { COLOR = NEWCOLOR0; }
+	else if (distance(current_pixel, OLDCOLOR1) <= precision) { COLOR = NEWCOLOR1; }
+	else if (distance(current_pixel, OLDCOLOR2) <= precision) { COLOR = NEWCOLOR2; }
+	else if (distance(current_pixel, OLDCOLOR3) <= precision) { COLOR = NEWCOLOR3; }
+	else if (distance(current_pixel, OLDCOLOR4) <= precision) { COLOR = NEWCOLOR4; }
+	else if (distance(current_pixel, OLDCOLOR5) <= precision) { COLOR = NEWCOLOR5; }
+	else if (distance(current_pixel, OLDCOLOR6) <= precision) { COLOR = NEWCOLOR6; }
+	else if (distance(current_pixel, OLDCOLOR7) <= precision) { COLOR = NEWCOLOR7; }
+	else if (distance(current_pixel, OLDCOLOR8) <= precision) { COLOR = NEWCOLOR8; }
+	else if (distance(current_pixel, OLDCOLOR9) <= precision) { COLOR = NEWCOLOR9; }
+	else if (distance(current_pixel, OLDCOLOR10) <= precision) { COLOR = NEWCOLOR10; }
+	else if (distance(current_pixel, OLDCOLOR11) <= precision) { COLOR = NEWCOLOR11; }
+	else if (distance(current_pixel, OLDCOLOR12) <= precision) { COLOR = NEWCOLOR12; }
+	else if (distance(current_pixel, OLDCOLOR13) <= precision) { COLOR = NEWCOLOR13; }
+	else { COLOR = current_pixel; }
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/OLDCOLOR0 = Color( 0, 0, 0, 1 )
+shader_param/NEWCOLOR0 = Color( 0, 0, 0, 1 )
+shader_param/OLDCOLOR1 = Color( 0.396078, 0.717647, 0.835294, 1 )
+shader_param/NEWCOLOR1 = Color( 0.396078, 0.717647, 0.835294, 1 )
+shader_param/OLDCOLOR2 = Color( 0.176471, 0.309804, 0.482353, 1 )
+shader_param/NEWCOLOR2 = Color( 0.176471, 0.309804, 0.482353, 1 )
+shader_param/OLDCOLOR3 = Color( 0.568627, 0.137255, 0.137255, 1 )
+shader_param/NEWCOLOR3 = Color( 0.568627, 0.137255, 0.137255, 1 )
+shader_param/OLDCOLOR4 = Color( 0.333333, 0.0823529, 0.0823529, 1 )
+shader_param/NEWCOLOR4 = Color( 0.333333, 0.0823529, 0.0823529, 1 )
+shader_param/OLDCOLOR5 = Color( 0.0980392, 0.0823529, 0.2, 1 )
+shader_param/NEWCOLOR5 = Color( 0.0980392, 0.0823529, 0.2, 1 )
+shader_param/OLDCOLOR6 = Color( 0.0196078, 0.0156863, 0.0509804, 1 )
+shader_param/NEWCOLOR6 = Color( 0, 0, 0, 1 )
+shader_param/OLDCOLOR7 = Color( 0.184314, 0.129412, 0.0862745, 1 )
+shader_param/NEWCOLOR7 = Color( 0.184314, 0.129412, 0.0862745, 1 )
+shader_param/OLDCOLOR8 = Color( 0.0823529, 0.054902, 0.027451, 1 )
+shader_param/NEWCOLOR8 = Color( 0.0823529, 0.054902, 0.027451, 1 )
+shader_param/OLDCOLOR9 = Color( 0.717647, 0.717647, 0.717647, 1 )
+shader_param/NEWCOLOR9 = Color( 0.717647, 0.717647, 0.717647, 1 )
+shader_param/OLDCOLOR10 = Color( 0.517647, 0.517647, 0.517647, 1 )
+shader_param/NEWCOLOR10 = Color( 0.517647, 0.517647, 0.517647, 1 )
+shader_param/OLDCOLOR11 = Color( 0.733333, 0.615686, 0.529412, 1 )
+shader_param/NEWCOLOR11 = Color( 0.733333, 0.615686, 0.529412, 1 )
+shader_param/OLDCOLOR12 = Color( 0.466667, 0.32549, 0.219608, 1 )
+shader_param/NEWCOLOR12 = Color( 0.466667, 0.32549, 0.219608, 1 )
+shader_param/OLDCOLOR13 = Color( 0, 0, 0, 1 )
+shader_param/NEWCOLOR13 = Color( 0, 0, 0, 1 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="Shader" id=20]
+code = "shader_type canvas_item;
+
+uniform vec4 OLDCOLOR16 : hint_color;
+uniform vec4 NEWCOLOR16 : hint_color;
+
+uniform vec4 OLDCOLOR17 : hint_color;
+uniform vec4 NEWCOLOR17 : hint_color;
+
+uniform vec4 OLDCOLOR18 : hint_color;
+uniform vec4 NEWCOLOR18 : hint_color;
+
+const float precision = 0.01;
+
+void fragment() {
+	vec4 current_pixel = texture(TEXTURE, UV);
+	
+	if (distance(current_pixel, OLDCOLOR16) <= precision) { COLOR = NEWCOLOR16; }
+	else if (distance(current_pixel, OLDCOLOR17) <= precision) { COLOR = NEWCOLOR17; }
+	else if (distance(current_pixel, OLDCOLOR18) <= precision) { COLOR = NEWCOLOR18; }
+	else { COLOR = current_pixel; }
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 20 )
+shader_param/OLDCOLOR16 = Color( 0.4, 0.717647, 0.835294, 1 )
+shader_param/NEWCOLOR16 = Color( 0.4, 0.717647, 0.835294, 1 )
+shader_param/OLDCOLOR17 = null
+shader_param/NEWCOLOR17 = null
+shader_param/OLDCOLOR18 = null
+shader_param/NEWCOLOR18 = null
+
+[sub_resource type="Shader" id=21]
+code = "shader_type canvas_item;
+
+uniform vec4 OLDCOLOR14 : hint_color;
+uniform vec4 NEWCOLOR14 : hint_color;
+
+uniform vec4 OLDCOLOR15 : hint_color;
+uniform vec4 NEWCOLOR15 : hint_color;
+
+uniform vec4 OLDCOLOR18 : hint_color;
+uniform vec4 NEWCOLOR18 : hint_color;
+
+const float precision = 0.01;
+
+void fragment() {
+	vec4 current_pixel = texture(TEXTURE, UV);
+	
+	if (distance(current_pixel, OLDCOLOR14) <= precision) { COLOR = NEWCOLOR14; }
+	else if (distance(current_pixel, OLDCOLOR15) <= precision) { COLOR = NEWCOLOR15; }
+	else if (distance(current_pixel, OLDCOLOR18) <= precision) { COLOR = NEWCOLOR18; }
+	else { COLOR = current_pixel; }
+}"
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/OLDCOLOR14 = Color( 0.4, 0.717647, 0.835294, 1 )
+shader_param/NEWCOLOR14 = Color( 0.4, 0.717647, 0.835294, 1 )
+shader_param/OLDCOLOR15 = Color( 0.180392, 0.309804, 0.482353, 1 )
+shader_param/NEWCOLOR15 = Color( 0.180392, 0.309804, 0.482353, 1 )
+shader_param/OLDCOLOR18 = Color( 1, 1, 1, 1 )
+shader_param/NEWCOLOR18 = Color( 1, 1, 1, 1 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="Shader" id=23]
+code = "shader_type canvas_item;
+
+uniform vec4 OLDCOLOR16 : hint_color;
+uniform vec4 NEWCOLOR16 : hint_color;
+
+uniform vec4 OLDCOLOR17 : hint_color;
+uniform vec4 NEWCOLOR17 : hint_color;
+
+uniform vec4 OLDCOLOR18 : hint_color;
+uniform vec4 NEWCOLOR18 : hint_color;
+
+const float precision = 0.01;
+
+void fragment() {
+	vec4 current_pixel = texture(TEXTURE, UV);
+	
+	if (distance(current_pixel, OLDCOLOR16) <= precision) { COLOR = NEWCOLOR16; }
+	else if (distance(current_pixel, OLDCOLOR17) <= precision) { COLOR = NEWCOLOR17; }
+	else if (distance(current_pixel, OLDCOLOR18) <= precision) { COLOR = NEWCOLOR18; }
+	else { COLOR = current_pixel; }
+}"
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = SubResource( 23 )
+shader_param/OLDCOLOR16 = null
+shader_param/NEWCOLOR16 = null
+shader_param/OLDCOLOR17 = null
+shader_param/NEWCOLOR17 = null
+shader_param/OLDCOLOR18 = null
+shader_param/NEWCOLOR18 = null
+
+[sub_resource type="Shader" id=25]
+code = "shader_type canvas_item;
+
+uniform vec4 OLDCOLOR16 : hint_color;
+uniform vec4 NEWCOLOR16 : hint_color;
+
+uniform vec4 OLDCOLOR17 : hint_color;
+uniform vec4 NEWCOLOR17 : hint_color;
+
+uniform vec4 OLDCOLOR18 : hint_color;
+uniform vec4 NEWCOLOR18 : hint_color;
+
+const float precision = 0.01;
+
+void fragment() {
+	vec4 current_pixel = texture(TEXTURE, UV);
+	
+	if (distance(current_pixel, OLDCOLOR16) <= precision) { COLOR = NEWCOLOR16; }
+	else if (distance(current_pixel, OLDCOLOR17) <= precision) { COLOR = NEWCOLOR17; }
+	else if (distance(current_pixel, OLDCOLOR18) <= precision) { COLOR = NEWCOLOR18; }
+	else { COLOR = current_pixel; }
+}"
+
+[sub_resource type="ShaderMaterial" id=26]
+shader = SubResource( 25 )
+shader_param/OLDCOLOR16 = Color( 0.835294, 0.67451, 0.396078, 1 )
+shader_param/NEWCOLOR16 = Color( 0.835294, 0.67451, 0.396078, 1 )
+shader_param/OLDCOLOR17 = Color( 0.733333, 0.443137, 0.309804, 1 )
+shader_param/NEWCOLOR17 = Color( 0.733333, 0.443137, 0.309804, 1 )
+shader_param/OLDCOLOR18 = Color( 1, 1, 1, 1 )
+shader_param/NEWCOLOR18 = Color( 1, 1, 1, 1 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
 
 [node name="PaletteEditor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,41 +345,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CharacterSprite" type="Sprite" parent="CharacterPanel"]
-position = Vector2( 148, 169 )
-scale = Vector2( 5.4375, 5.1875 )
-texture = ExtResource( 2 )
-hframes = 4
+[node name="CharacterSprite" type="AnimatedSprite" parent="CharacterPanel"]
+material = SubResource( 3 )
+position = Vector2( 147.878, 167 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 8 )
+playing = true
 
 [node name="AttackPanel" type="Panel" parent="."]
+material = SubResource( 9 )
 margin_left = 322.0
-margin_top = 35.0
+margin_top = 32.7551
 margin_right = 561.0
-margin_bottom = 250.0
+margin_bottom = 247.755
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="AttackSprite" type="Sprite" parent="AttackPanel"]
-position = Vector2( 120.5, 107.5 )
-scale = Vector2( 7.40625, 6.65625 )
-texture = ExtResource( 3 )
-hframes = 4
+[node name="AttackSprite" type="AnimatedSprite" parent="AttackPanel"]
+material = SubResource( 22 )
+position = Vector2( 113.369, 106.634 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 14 )
+playing = true
 
 [node name="SuperPanel" type="Panel" parent="."]
+material = SubResource( 24 )
 margin_left = 322.0
-margin_top = 259.0
+margin_top = 260.122
 margin_right = 561.0
-margin_bottom = 483.0
+margin_bottom = 484.122
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="SuperSprite" type="Sprite" parent="SuperPanel"]
-position = Vector2( 120.5, 111 )
-scale = Vector2( 4.9375, 4.625 )
-texture = ExtResource( 1 )
-hframes = 4
+[node name="SuperSprite" type="AnimatedSprite" parent="SuperPanel"]
+material = SubResource( 26 )
+position = Vector2( 107.304, 105.705 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 19 )
+frame = 1
+playing = true
 
 [node name="CharacterFlipped" type="CheckButton" parent="."]
 margin_left = 78.0
@@ -103,10 +411,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 705.0
-margin_top = 35.0
-margin_right = 1013.0
-margin_bottom = 497.0
+margin_left = 708.0
+margin_top = 41.0
+margin_right = 1016.0
+margin_bottom = 503.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,3 +431,8 @@ selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="item_selected" from="ColorList" to="." method="_on_ColorList_item_selected"]
+[connection signal="nothing_selected" from="ColorList" to="." method="_on_ColorList_nothing_selected"]
+[connection signal="pressed" from="CharacterFlipped" to="." method="_on_CharacterFlipped_pressed"]
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_ColorPicker_color_changed"]
