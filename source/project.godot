@@ -23,8 +23,8 @@ global="*res://global.gd"
 
 [display]
 
-window/size/test_width=1280
-window/size/test_height=720
+window/size/test_width=1024
+window/size/test_height=600
 
 [physics]
 

@@ -1,140 +1,203 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/PaletteFileManager.gd" type="Script" id=1]
+
+[sub_resource type="Theme" id=1]
 
 [node name="PaletteFileManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Background" type="ColorRect" parent="."]
-margin_left = -1.25995
-margin_top = 1.0
-margin_right = 1022.74
-margin_bottom = 601.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.180392, 0.180392, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Info" type="Container" parent="."]
+anchor_left = 0.167
+anchor_top = 0.42
+anchor_right = 0.167
+anchor_bottom = 0.42
+margin_left = -148.127
+margin_top = -226.297
+margin_right = 147.873
+margin_bottom = 226.703
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CurrentInfographic" type="TextEdit" parent="Info"]
+margin_left = 6.8811
+margin_top = 334.238
+margin_right = 290.881
+margin_bottom = 448.238
+text = "Current Palette
+Index: null
+Character: null"
+readonly = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainLabel" type="Label" parent="."]
-margin_left = 29.0
-margin_top = 36.0
-margin_right = 188.0
-margin_bottom = 50.0
+[node name="OverallInfographic" type="TextEdit" parent="Info"]
+margin_left = 6.11896
+margin_top = 66.2974
+margin_right = 290.119
+margin_bottom = 320.297
+text = "Total number of Palettes: 0
+Number of Shoto Goto Palettes: 0
+Number of Yo Yona Palettes: 0
+Number of Dr Kero Palettes: 0
+Number of Don McRon Palettes: 0
+Number of Dark Goto Palettes: 0
+Number of Slime Bros Palettes: 0
+Number of Reaper Angel Palettes: 0
+Number of Vince Volt Palettes: 0
+"
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainLabel" type="Label" parent="Info"]
+margin_left = 6.11896
+margin_top = 10.2974
+margin_right = 165.119
+margin_bottom = 24.2974
 text = "Palette File Manager"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EditButton" type="Button" parent="."]
-margin_left = 543.0
-margin_top = 57.7401
-margin_right = 619.0
-margin_bottom = 99.7401
-rect_pivot_offset = Vector2( 59, 21 )
-text = "Edit"
+[node name="PaletteList" type="Container" parent="."]
+anchor_left = 0.761
+anchor_top = 0.492
+anchor_right = 0.761
+anchor_bottom = 0.492
+margin_left = -214.215
+margin_top = -254.784
+margin_right = 214.785
+margin_bottom = 255.216
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ItemList" type="ItemList" parent="PaletteList"]
+margin_left = 100.962
+margin_top = 4.81076
+margin_right = 418.962
+margin_bottom = 501.811
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewButton" type="Button" parent="."]
-margin_left = 544.0
-margin_top = 119.0
-margin_right = 620.0
-margin_bottom = 161.0
+[node name="Buttons" type="Container" parent="PaletteList"]
+margin_left = 0.675781
+margin_top = 2.16751
+margin_right = 99.6758
+margin_bottom = 187.168
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewButton" type="Button" parent="PaletteList/Buttons"]
+margin_left = 9.0
+margin_top = 69.0
+margin_right = 85.0
+margin_bottom = 111.0
 rect_pivot_offset = Vector2( 59, 21 )
 text = "New"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeleteButton" type="Button" parent="."]
-margin_left = 545.0
-margin_top = 178.0
-margin_right = 621.0
-margin_bottom = 220.0
+[node name="EditButton" type="Button" parent="PaletteList/Buttons"]
+margin_left = 8.0
+margin_top = 7.7401
+margin_right = 84.0
+margin_bottom = 49.7401
+rect_pivot_offset = Vector2( 59, 21 )
+text = "Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteButton" type="Button" parent="PaletteList/Buttons"]
+margin_left = 10.0
+margin_top = 128.0
+margin_right = 86.0
+margin_bottom = 170.0
+theme = SubResource( 1 )
 text = "Delete"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OverallInfographic" type="TextEdit" parent="."]
-margin_left = 29.0
-margin_top = 92.0
-margin_right = 313.0
-margin_bottom = 346.0
-text = "Total Number of Palettes: 0
-etc..."
-readonly = true
+[node name="MenuButtons" type="Container" parent="."]
+anchor_left = 0.289
+anchor_top = 0.883
+anchor_right = 0.289
+anchor_bottom = 0.883
+margin_left = -263.936
+margin_top = -34.8
+margin_right = 264.064
+margin_bottom = 35.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentInfographic" type="TextEdit" parent="."]
-margin_left = 34.0
-margin_top = 361.0
-margin_right = 314.0
-margin_bottom = 475.0
-text = "Current Palette:
-Index:
-Character:
-etc..."
-readonly = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SaveMenuButton" type="Button" parent="."]
-margin_left = 37.0
-margin_top = 507.0
-margin_right = 132.0
-margin_bottom = 557.0
+[node name="SaveMenuButton" type="Button" parent="MenuButtons"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 85.0
+margin_bottom = 65.0
 text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ExportMenuButton" type="Button" parent="."]
-margin_left = 149.0
-margin_top = 508.0
-margin_right = 246.0
-margin_bottom = 558.0
+[node name="ExportMenuButton" type="Button" parent="MenuButtons"]
+margin_left = 117.0
+margin_top = 5.0
+margin_right = 197.0
+margin_bottom = 65.0
 text = "Export"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="."]
-margin_left = 356.0
-margin_top = 507.0
-margin_right = 450.0
-margin_bottom = 557.0
+[node name="BackButton" type="Button" parent="MenuButtons"]
+margin_left = 324.0
+margin_top = 5.0
+margin_right = 404.0
+margin_bottom = 65.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeleteMenuButton" type="Button" parent="."]
-margin_left = 473.0
-margin_top = 507.0
-margin_right = 568.0
-margin_bottom = 558.0
+[node name="DeleteMenuButton" type="Button" parent="MenuButtons"]
+margin_left = 441.0
+margin_top = 5.0
+margin_right = 523.0
+margin_bottom = 65.0
 text = "Delete File"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="."]
-margin_left = 648.0
-margin_top = 59.0
-margin_right = 966.0
-margin_bottom = 556.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
-[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
-[connection signal="pressed" from="SaveMenuButton" to="." method="_on_SaveMenuButton_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="item_activated" from="PaletteList/ItemList" to="." method="_on_ItemList_item_activated"]
+[connection signal="item_selected" from="PaletteList/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="nothing_selected" from="PaletteList/ItemList" to="." method="_on_ItemList_nothing_selected"]
+[connection signal="pressed" from="PaletteList/Buttons/NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="pressed" from="PaletteList/Buttons/EditButton" to="." method="_on_EditButton_pressed"]
+[connection signal="pressed" from="PaletteList/Buttons/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="MenuButtons/SaveMenuButton" to="." method="_on_SaveMenuButton_pressed"]
+[connection signal="pressed" from="MenuButtons/BackButton" to="." method="_on_BackButton_pressed"]

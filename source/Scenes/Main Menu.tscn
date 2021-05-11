@@ -11,42 +11,66 @@ __meta__ = {
 }
 
 [node name="Background" type="ColorRect" parent="."]
-margin_right = 1022.0
-margin_bottom = 599.0
+anchor_left = -0.000976563
+anchor_right = 1.00391
+anchor_bottom = 1.02667
 color = Color( 0.180392, 0.180392, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.18902
+anchor_top = 0.239449
+anchor_right = 0.81098
+anchor_bottom = 0.760551
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CreateFileButton" type="Button" parent="Background/VBoxContainer"]
+margin_top = 118.0
+margin_right = 639.0
+margin_bottom = 138.0
+text = "Create New Palette File"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EditCurrentFileButton" type="Button" parent="."]
-margin_left = 318.0
-margin_top = 152.0
-margin_right = 718.0
-margin_bottom = 227.0
+[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
+margin_top = 142.0
+margin_right = 639.0
+margin_bottom = 146.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditCurrentFileButton" type="Button" parent="Background/VBoxContainer"]
+margin_top = 150.0
+margin_right = 639.0
+margin_bottom = 170.0
 rect_pivot_offset = Vector2( 177, 37.5 )
 text = "Edit Current Palette File"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ImportFileButton" type="Button" parent="."]
-margin_left = 318.0
-margin_top = 237.0
-margin_right = 718.0
-margin_bottom = 312.0
+[node name="HSeparator2" type="HSeparator" parent="Background/VBoxContainer"]
+margin_top = 174.0
+margin_right = 639.0
+margin_bottom = 178.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImportFileButton" type="Button" parent="Background/VBoxContainer"]
+margin_top = 182.0
+margin_right = 639.0
+margin_bottom = 202.0
 text = "Import Palette File"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreateFileButton" type="Button" parent="."]
-margin_left = 319.0
-margin_top = 323.0
-margin_right = 719.0
-margin_bottom = 398.0
-text = "Create New Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
