@@ -54,8 +54,9 @@ func update_overall_infographic():
 
 func _process(_delta):
 	if global.state == global.SAVE_PALETTE or global.state == global.EDITING_SESSION:
-		for palette in global.palettes:
-			match palette["character"]:
+		for item in global.palettes:
+			print(global.palettes)
+			match item["character"]:
 				0: ItemList.add_item("Shoto Goto", load("res://Assets/portrait/goto.png"))
 				1: ItemList.add_item("Yo Yona", load("res://Assets/portrait/yoyo.png"))
 				2: ItemList.add_item("Dr Kero", load("res://Assets/portrait/kero.png"))
@@ -66,6 +67,7 @@ func _process(_delta):
 				7: ItemList.add_item("Reaper Angel", load("res://Assets/portrait/scythe.png"))
 		global.state = global.NONE
 		update_overall_infographic()
+		print(global.palettes)
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://Scenes/Main Menu.tscn")

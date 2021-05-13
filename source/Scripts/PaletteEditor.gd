@@ -31,14 +31,16 @@ func _ready():
 			4: string = "Dark Goto"
 			5: string = "Slime Bros"
 			6: string = "Vince Volt"
-			7: string = "Reaper Angel"
+			7: string = "Reaper"
 		CharacterSprite.set_animation("%s Idle" % string)
 		AttackSprite.set_animation("%s Attack" % string)
 		SuperSprite.set_animation("%s Super" % string)
-		current_index = global.passing_index
 		character_index = global.palettes[global.passing_index]["character"]
+		current_index = 0
 		for color in global.palettes[global.passing_index]["palette"]:
 			apply_shader(color)
+			current_index += 1
+		current_index = null
 
 func _on_ColorList_item_selected(index):
 	ColorPicker.color = Color(ColorList.get_item_text(index))
@@ -70,11 +72,10 @@ func _on_SaveMenuButton_pressed():
 		global.palettes.append(palette)
 		global.state = global.SAVE_PALETTE
 	else:
-		var i = 0
-		for item in global.palettes[global.passing_index]["palette"]:
-			global.palettes.remove(i)
-			global.palettes.append(ColorList.get_item_text(i))
-			i += 1
+		print("Editing: %s" % global.palettes[global.passing_index])
+		global.palettes[global.passing_index]["palette"].clear()
+		for i in range(ColorList.get_item_count()):
+			global.palettes[global.passing_index]["palette"].append(ColorList.get_item_text(i))
 	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
 
 func _on_CharacterSelect_item_selected(index):
@@ -94,12 +95,12 @@ func _on_CharacterSelect_item_selected(index):
 		
 func apply_shader(color):
 	if current_index <= 13:
-		CharacterSprite.material.set("shader_param/NEWCOLOR%d" % current_index, color)
+		CharacterSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
 	elif current_index <= 15:
-		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, color)
+		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
 	elif current_index <= 17:
-		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, color)
+		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
 	elif current_index == 18:
-		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, color)
-		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, color)
+		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
+		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
 
