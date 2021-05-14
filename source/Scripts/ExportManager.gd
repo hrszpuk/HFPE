@@ -25,3 +25,10 @@ func get_info_content():
 			6: string = "Vince Volt"
 			7: string = "Reaper Angel"
 		$TInfo.text += "Number of %s Palettes: %d\n" % [string, global.config_values[global.char_int_to_str(i) + "_num"]]
+
+
+func _on_ExportButton_pressed():
+	var config = global.generate_palette_config()
+	var err = config.save("user://"+global.palette_filename+".cfg")
+	if err != OK:
+		print("SHIT")

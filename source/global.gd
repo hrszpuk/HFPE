@@ -54,22 +54,28 @@ func generate_palette_config():
 	
 	var highest_character_count = {character = "null", count = 0}
 	for key in config_values.keys():
-		config.add_value("options", str(key), config_values[str(key)])
+		config.set_value("options", str(key), config_values[str(key)])
 		if config_values[str(key)] > highest_character_count["count"]:
 			highest_character_count["count"] = config_values[str(key)]
 			highest_character_count["character"] = str(key)
-	config.add_value("options", "enabled", enabled)
+	config.set_value("options", "enabled", enabled)
 	
+	var character_name = highest_character_count["character"].replace("_num", "")
 	for i in range(highest_character_count["count"]):
-		config.add_value("custom%d" % i, highest_character_count["character"].replace("_num", ""))
+		config.set_value("custom%d" % i, character_name, find_char_in_palette(character_name)[i-1]["palette"])
 	
 	for palette in palettes:
 		for i in range(highest_character_count["count"]):
 			if not config.has_section_key("custom%d" % i, char_int_to_str(palette["character"])):
-				config.add_value("custom%d" % i, char_int_to_str(palette["character"]), palette["palette"])
+				config.set_value("custom%d" % i, char_int_to_str(palette["character"]), palette["palette"])
 	
 	# for section in section: if character not in section, add default character to section
-	# return config
+	for i in range(highest_character_count["count"]):
+		for j in range(8):
+			if not config.has_section_key("custom%d" % i, char_int_to_str(j-1)):
+				config.set_value("custom%d" % i, char_int_to_str(j-1), pal[char_int_to_str_proper(j-1)])
+			
+	return config
 			
 func char_int_to_str(num: int):
 	var string
@@ -83,6 +89,27 @@ func char_int_to_str(num: int):
 		6: string = "sword"
 		7: string = "scythe"
 	return string
+	
+func char_int_to_str_proper(num: int) -> String:
+	var string
+	match (num):
+		0: string = "Shoto_Goto"
+		1: string = "Yo_Yona"
+		2: string = "Dr_Kero"
+		3: string = "Don_McRon"
+		4: string = "Dark_Goto"
+		5: string = "Slime_Bros"
+		6: string = "Vince_Volt"
+		7: string = "Reaper"
+	return string
+	
+func find_char_in_palette(character):
+	var values = []
+	for palette in palettes:
+		if char_int_to_str(palette["character"]) == character:
+			values.append(palette)
+	return values
+			
 	
 	
 	

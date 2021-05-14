@@ -82,4 +82,5 @@ __meta__ = {
 }
 
 [connection signal="toggled" from="Enabled" to="." method="_on_Enabled_toggled"]
+[connection signal="pressed" from="ExportButton" to="." method="_on_ExportButton_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
