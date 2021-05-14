@@ -34,13 +34,14 @@ __meta__ = {
 }
 
 [node name="CurrentInfographic" type="TextEdit" parent="Info"]
-margin_left = 6.8811
-margin_top = 334.238
+margin_left = 6.881
+margin_top = 260.0
 margin_right = 290.881
-margin_bottom = 448.238
+margin_bottom = 374.0
 text = "Current Palette
 Index: null
-Character: null"
+Character: null
+Color:"
 readonly = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,7 +51,7 @@ __meta__ = {
 margin_left = 6.11896
 margin_top = 66.2974
 margin_right = 290.119
-margin_bottom = 320.297
+margin_bottom = 246.297
 text = "Total number of Palettes: 0
 Number of Shoto Goto Palettes: 0
 Number of Yo Yona Palettes: 0
@@ -76,6 +77,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NameLabel" type="Label" parent="Info"]
+margin_left = 7.32307
+margin_top = 387.715
+margin_right = 77.3231
+margin_bottom = 406.715
+text = "Filename:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameInput" type="LineEdit" parent="Info"]
+margin_left = 72.119
+margin_top = 383.297
+margin_right = 289.119
+margin_bottom = 407.297
+text = "Untitled"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PaletteList" type="Container" parent="."]
 anchor_left = 0.761
 anchor_top = 0.492
@@ -94,6 +115,7 @@ margin_left = 100.962
 margin_top = 4.81076
 margin_right = 418.962
 margin_bottom = 501.811
+icon_scale = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -200,4 +222,6 @@ __meta__ = {
 [connection signal="pressed" from="PaletteList/Buttons/EditButton" to="." method="_on_EditButton_pressed"]
 [connection signal="pressed" from="PaletteList/Buttons/DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="pressed" from="MenuButtons/SaveMenuButton" to="." method="_on_SaveMenuButton_pressed"]
+[connection signal="pressed" from="MenuButtons/ExportMenuButton" to="." method="_on_ExportMenuButton_pressed"]
 [connection signal="pressed" from="MenuButtons/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MenuButtons/DeleteMenuButton" to="." method="_on_DeleteMenuButton_pressed"]

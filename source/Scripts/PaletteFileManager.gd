@@ -27,6 +27,7 @@ func update_current_infographic(index: int):
 		6: string = "Vince Volt"
 		7: string = "Reaper Angel"
 	CInfo.text += "Character: %s\n" % string
+	CInfo.text += "Color: %s" % str(global.palettes[index]["palette"])
 
 func update_palette_count():
 	for palette in global.palettes:
@@ -52,22 +53,25 @@ func update_overall_infographic():
 	OInfo.text += "Number of Reaper Angel Palettes: %d\n" % palette_count["reaper"]
 	OInfo.text += "Number of Vince Volt Palettes: %d\n" % palette_count["vince"]
 
-func _process(_delta):
-	if global.state == global.SAVE_PALETTE or global.state == global.EDITING_SESSION:
+func _ready():
+	var accepted_states = [global.SAVE_PALETTE, global.EDITING_SESSION, global.EXPORT]
+	if global.state in accepted_states:
 		for item in global.palettes:
-			print(global.palettes)
 			match item["character"]:
-				0: ItemList.add_item("Shoto Goto", load("res://Assets/portrait/goto.png"))
-				1: ItemList.add_item("Yo Yona", load("res://Assets/portrait/yoyo.png"))
-				2: ItemList.add_item("Dr Kero", load("res://Assets/portrait/kero.png"))
-				3: ItemList.add_item("Don McRon", load("res://Assets/portrait/time.png"))
-				4: ItemList.add_item("Dark Goto", load("res://Assets/portrait/darkgoto.png"))
-				5: ItemList.add_item("Slime Bro", load("res://Assets/portrait/slime.png"))
-				6: ItemList.add_item("Vince Volt", load("res://Assets/portrait/sword.png"))
-				7: ItemList.add_item("Reaper Angel", load("res://Assets/portrait/scythe.png"))
+				0: ItemList.add_item("Shoto Goto - %s" % item["name"], load("res://Assets/portrait/goto.png"))
+				1: ItemList.add_item("Yo Yona - %s" % item["name"], load("res://Assets/portrait/yoyo.png"))
+				2: ItemList.add_item("Dr Kero - %s" % item["name"], load("res://Assets/portrait/kero.png"))
+				3: ItemList.add_item("Don McRon - %s" % item["name"], load("res://Assets/portrait/time.png"))
+				4: ItemList.add_item("Dark Goto - %s" % item["name"], load("res://Assets/portrait/darkgoto.png"))
+				5: ItemList.add_item("Slime Bro - %s" % item["name"], load("res://Assets/portrait/slime.png"))
+				6: ItemList.add_item("Vince Volt - %s" % item["name"], load("res://Assets/portrait/sword.png"))
+				7: ItemList.add_item("Reaper Angel - %s" % item["name"], load("res://Assets/portrait/scythe.png"))
 		global.state = global.NONE
 		update_overall_infographic()
-		print(global.palettes)
+	if global.palette_filename == null:
+		$Info/NameInput.text = "Untitled"
+	else:
+		$Info/NameInput.text = global.palette_filename
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://Scenes/Main Menu.tscn")
@@ -76,7 +80,8 @@ func _on_NewButton_pressed():
 	get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
 
 func _on_SaveMenuButton_pressed():
-	pass
+	global.palette_filename = $Info/NameInput.text
+	global.save_palette()
 
 func _on_DeleteButton_pressed():
 	if current_index != null:
@@ -101,3 +106,12 @@ func _on_ItemList_nothing_selected():
 func _on_ItemList_item_activated(index):
 	global.passing_index = index
 	get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
+
+func _on_DeleteMenuButton_pressed():
+	var dir = Directory.new()
+	dir.remove("user://%s.cfg" % $Info/NameInput.text)
+
+
+func _on_ExportMenuButton_pressed():
+	global.state = global.EXPORT
+	get_tree().change_scene("res://Scenes/ExportManager.tscn")

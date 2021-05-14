@@ -3,11 +3,13 @@ extends Node
 enum {
 	NONE, 
 	SAVE_PALETTE,
-	EDITING_SESSION
+	EDITING_SESSION,
+	EXPORT
 }
 
 var passing_index = null
 var state = NONE
+var palette_filename = "Untitled"
 
 # Palette
 var pal = {
@@ -22,4 +24,15 @@ var pal = {
 }
 
 var palettes = []
+
+func save_palette():
+	var config = ConfigFile.new()
+	config.set_value("Data", "palettes", palettes)
+	var err = config.save("user://%s.cfg" % palette_filename)
+	
+
+func load_palette():
+	var config = ConfigFile.new()
+	config.load("user://palette.cfg")
+	palettes = config.get_value("Data", "palettes", null)
 

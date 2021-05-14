@@ -13,16 +13,23 @@ func _ready():
 	if global.passing_index == null:
 		for color in global.pal["Shoto_Goto"]:
 			ColorList.add_item(color, null, true)
-		
+		$CharacterContainer/PaletteNameInput.text = "Unnamed"
 		CharacterSprite.set_animation("Shoto Goto Idle")
 		AttackSprite.set_animation("Shoto Goto Attack")
 		SuperSprite.set_animation("Shoto Goto Super")
+		set_shader_settings(0)
 		current_index = 0
 		character_index = 0
+		CharacterSprite.material.set("shader_param/threshold", 0.001)#
 	else:
+		$CharacterContainer/PaletteNameInput.text = global.palettes[global.passing_index]["name"]
+		CharacterSelect.selected = global.palettes[global.passing_index]["character"]
+		CharacterSelect.disabled = true
 		for color in global.palettes[global.passing_index]["palette"]:
 			ColorList.add_item(str(color), null, true)
 		var string
+		set_shader_settings(global.palettes[global.passing_index]["character"])
+		CharacterSprite.material.set("shader_param/threshold", 0.001)
 		match global.palettes[global.passing_index]["character"]:
 			0: string = "Shoto Goto"
 			1: string = "Yo Yona"
@@ -65,6 +72,7 @@ func _on_CancelButton_pressed():
 func _on_SaveMenuButton_pressed():
 	if global.state != global.EDITING_SESSION:
 		var palette = {}
+		palette["name"] = $CharacterContainer/PaletteNameInput.text
 		palette["character"] = character_index
 		palette["palette"] = []
 		for i in range(ColorList.get_item_count()):
@@ -74,8 +82,10 @@ func _on_SaveMenuButton_pressed():
 	else:
 		print("Editing: %s" % global.palettes[global.passing_index])
 		global.palettes[global.passing_index]["palette"].clear()
+		global.palettes[global.passing_index]["name"] = $CharacterContainer/PaletteNameInput.text
 		for i in range(ColorList.get_item_count()):
 			global.palettes[global.passing_index]["palette"].append(ColorList.get_item_text(i))
+		global.passing_index = null
 	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
 
 func _on_CharacterSelect_item_selected(index):
@@ -83,6 +93,7 @@ func _on_CharacterSelect_item_selected(index):
 	CharacterSprite.set_animation("%s Idle" % CharacterSelect.get_item_text(index))
 	AttackSprite.set_animation("%s Attack" % CharacterSelect.get_item_text(index))
 	SuperSprite.set_animation("%s Super" % CharacterSelect.get_item_text(index))
+	set_shader_settings(index)
 	var string = ""
 	for c in CharacterSelect.get_item_text(index):
 		if c == " ":
@@ -93,14 +104,35 @@ func _on_CharacterSelect_item_selected(index):
 	for color in global.pal[string]:
 		ColorList.add_item(color, null, true)
 		
+func set_shader_settings(character: int):
+	var i = 0
+	var string
+	match character:
+		0: string = "Shoto_Goto"
+		1: string = "Yo_Yona"
+		2: string = "Dr_Kero"
+		3: string = "Don_McRon"
+		4: string = "Dark_Goto"
+		5: string = "Slime_Bros"
+		6: string = "Vince_Volt"
+		7: string = "Reaper"
+	for item in str_array_to_color_array(global.pal[string]):
+		CharacterSprite.material.set("shader_param/color_o%d" % i, item)
+		AttackSprite.material.set("shader_param/color_o%d" % i, item)
+		SuperSprite.material.set("shader_param/color_o%d" % i, item)
+		CharacterSprite.material.set("shader_param/color_n%d" % i, item)
+		AttackSprite.material.set("shader_param/color_n%d" % i, item)
+		SuperSprite.material.set("shader_param/color_n%d" % i, item)
+		i += 1
+		
 func apply_shader(color):
-	if current_index <= 13:
-		CharacterSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
-	elif current_index <= 15:
-		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
-	elif current_index <= 17:
-		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
-	elif current_index == 18:
-		AttackSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
-		SuperSprite.material.set("shader_param/NEWCOLOR%d" % current_index, Color(color))
+	CharacterSprite.material.set("shader_param/color_n%d" % current_index, Color(color))
+	AttackSprite.material.set("shader_param/color_n%d" % current_index, Color(color))
+	SuperSprite.material.set("shader_param/color_n%d" % current_index, Color(color))
+		
+func str_array_to_color_array(array) -> Array:
+	var color_array = []
+	for item in array:
+		color_array.append(Color(item))
+	return color_array
 
