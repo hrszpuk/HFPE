@@ -67,7 +67,7 @@ func _on_CharacterFlipped_pressed():
 	AttackSprite.scale.x *= -1
 
 func _on_CancelButton_pressed():
-	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
+	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
 
 func _on_SaveMenuButton_pressed():
 	if global.state != global.EDITING_SESSION:
@@ -80,13 +80,12 @@ func _on_SaveMenuButton_pressed():
 		global.palettes.append(palette)
 		global.state = global.SAVE_PALETTE
 	else:
-		print("Editing: %s" % global.palettes[global.passing_index])
 		global.palettes[global.passing_index]["palette"].clear()
 		global.palettes[global.passing_index]["name"] = $CharacterContainer/PaletteNameInput.text
 		for i in range(ColorList.get_item_count()):
 			global.palettes[global.passing_index]["palette"].append(ColorList.get_item_text(i))
 		global.passing_index = null
-	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
+	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
 
 func _on_CharacterSelect_item_selected(index):
 	character_index = index

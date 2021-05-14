@@ -11,6 +11,19 @@ var passing_index = null
 var state = NONE
 var palette_filename = "Untitled"
 
+# Palette config generation:
+var config_values = {
+	goto_num = 0,
+	yoyo_num = 0,
+	kero_num = 0,
+	sword_num = 0,
+	darkgoto_num = 0,
+	slime_num = 0,
+	time_num = 0,
+	scythe_num = 0,
+}
+var enabled = true
+
 # Palette
 var pal = {
 	Shoto_Goto = [ "000000", "65b7d5", "2d4f7b", "912323", "551515", "191533", "05040d", "2f2116", "150e07", "b7b7b7", "848484", "bb9d87", "775338", "000001", "66b7d5", "2e4f7b", "d5ac65", "bb714f", "ffffff" ],
@@ -28,7 +41,7 @@ var palettes = []
 func save_palette():
 	var config = ConfigFile.new()
 	config.set_value("Data", "palettes", palettes)
-	var err = config.save("user://%s.cfg" % palette_filename)
+	var _err = config.save("user://%s.cfg" % palette_filename)
 	
 
 func load_palette():
@@ -36,3 +49,42 @@ func load_palette():
 	config.load("user://palette.cfg")
 	palettes = config.get_value("Data", "palettes", null)
 
+func generate_palette_config():
+	var config = ConfigFile.new()
+	
+	var highest_character_count = {character = "null", count = 0}
+	for key in config_values.keys():
+		config.add_value("options", str(key), config_values[str(key)])
+		if config_values[str(key)] > highest_character_count["count"]:
+			highest_character_count["count"] = config_values[str(key)]
+			highest_character_count["character"] = str(key)
+	config.add_value("options", "enabled", enabled)
+	
+	for i in range(highest_character_count["count"]):
+		config.add_value("custom%d" % i, highest_character_count["character"].replace("_num", ""))
+	
+	for palette in palettes:
+		for i in range(highest_character_count["count"]):
+			if not config.has_section_key("custom%d" % i, char_int_to_str(palette["character"])):
+				config.add_value("custom%d" % i, char_int_to_str(palette["character"]), palette["palette"])
+	
+	# for section in section: if character not in section, add default character to section
+	# return config
+			
+func char_int_to_str(num: int):
+	var string
+	match (num):
+		0: string = "goto"
+		1: string = "yoyo"
+		2: string = "kero"
+		3: string = "time"
+		4: string = "darkgoto"
+		5: string = "slime"
+		6: string = "sword"
+		7: string = "scythe"
+	return string
+	
+	
+	
+	
+	

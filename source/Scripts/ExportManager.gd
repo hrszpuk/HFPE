@@ -1,20 +1,27 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	get_info_content()
 
 
 func _on_BackButton_pressed():
-	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
+	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
+
+
+func _on_Enabled_toggled(button_pressed):
+	global.enabled = button_pressed
+	
+func get_info_content():
+	$TInfo.text = "Total number of Palettes: %d\n" % len(global.palettes)
+	for i in range(7):
+		var string
+		match (i):
+			0: string = "Shoto Goto"
+			1: string = "Yo Yona"
+			2: string = "Dr Kero"
+			3: string = "Don McRon"
+			4: string = "Dark Goto"
+			5: string = "Slime Bros"
+			6: string = "Vince Volt"
+			7: string = "Reaper Angel"
+		$TInfo.text += "Number of %s Palettes: %d\n" % [string, global.config_values[global.char_int_to_str(i) + "_num"]]
