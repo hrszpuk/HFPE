@@ -73,4 +73,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 192.0
+margin_top = 83.0
+margin_right = 835.0
+margin_bottom = 483.0
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "/"
+current_path = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Background/VBoxContainer/CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/EditCurrentFileButton" to="." method="_on_EditCurrentFileButton_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/ImportFileButton" to="." method="_on_ImportFileButton_pressed"]
+[connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]

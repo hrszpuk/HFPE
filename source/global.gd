@@ -10,6 +10,7 @@ enum {
 var passing_index = null
 var state = NONE
 var palette_filename = "Untitled"
+var imported_data = null
 
 # Palette config generation:
 var config_values = {
@@ -51,6 +52,7 @@ func load_palette():
 
 func generate_palette_config():
 	var config = ConfigFile.new()
+	config_values = get_palette_nums()
 	
 	var highest_character_count = {character = "null", count = 0}
 	for key in config_values.keys():
@@ -62,20 +64,24 @@ func generate_palette_config():
 	
 	var character_name = highest_character_count["character"].replace("_num", "")
 	for i in range(highest_character_count["count"]):
-		config.set_value("custom%d" % i, character_name, find_char_in_palette(character_name)[i-1]["palette"])
+		config.set_value("custom%d" % (i+1), character_name, find_char_in_palette(character_name)[i-1]["palette"])
 	
+	var count = 0
 	for palette in palettes:
 		for i in range(highest_character_count["count"]):
-			if not config.has_section_key("custom%d" % i, char_int_to_str(palette["character"])):
-				config.set_value("custom%d" % i, char_int_to_str(palette["character"]), palette["palette"])
+			if not config.has_section_key("custom%d" % (i+1), char_int_to_str(palette["character"])):
+				config.set_value("custom%d" % (i+1), char_int_to_str(palette["character"]), palette["palette"])
+				palettes.remove(count)
+		count += 1
 	
 	# for section in section: if character not in section, add default character to section
 	for i in range(highest_character_count["count"]):
 		for j in range(8):
-			if not config.has_section_key("custom%d" % i, char_int_to_str(j-1)):
-				config.set_value("custom%d" % i, char_int_to_str(j-1), pal[char_int_to_str_proper(j-1)])
+			if not config.has_section_key("custom%d" % (i+1), char_int_to_str(j)):
+				config.set_value("custom%d" % (i+1), char_int_to_str(j), pal[char_int_to_str_proper(j)])
 			
 	return config
+	
 			
 func char_int_to_str(num: int):
 	var string
@@ -109,9 +115,66 @@ func find_char_in_palette(character):
 		if char_int_to_str(palette["character"]) == character:
 			values.append(palette)
 	return values
+	
+	
+func get_palette_nums() -> Dictionary:
+	var output = {
+		goto_num = 0, 
+		yoyo_num = 0, 
+		kero_num = 0, 
+		time_num = 0, 
+		sword_num = 0, 
+		scythe_num = 0,
+		darkgoto_num = 0,
+		slime_num = 0
+	}
+	for palette in global.palettes:
+		match palette["character"]:
+			0: output["goto_num"] += 1
+			1: output["yoyo_num"] += 1
+			2: output["kero_num"] += 1
+			3: output["time_num"] += 1
+			4: output["darkgoto_num"] += 1
+			5: output["slime_num"] += 1
+			6: output["sword_num"] += 1
+			7: output["scythe_num"] += 1
+	return output
+	
+func load_config():
+	var config = ConfigFile.new()
+	config.load(imported_data.path)
+	
+	for section in config.get_sections():
+		print(section)
+		print(config.get_section_keys())
+	
+
+#	for key in config_values.keys():
+#		config_values[key] = config.get_value("options", key)
+#	enabled = config.get_value("options", "enabled")
+
+#	var new_palettes = []
+#	for section in config.get_sections():
+#		if section == "options":
+#			continue
+#		for data in get_data_from_section(config, section):
+#			if not matches_default_character_set(data):
+#				new_palettes.append(data)
+#	palettes = new_palettes
+	
+func get_data_from_section(config: ConfigFile, section: String) -> Array:
+	var output = []
+	for key in config.get_section_keys(section):
+		output.append(config.get_value(section, key))
+	return output
+
+func matches_default_character_set(data) -> bool:
+	for value in pal:
+		if value == data:
+			return true
+	return false
+	
 			
-	
-	
 	
 	
 	

@@ -26,20 +26,10 @@ func update_current_infographic(index: int):
 	CInfo.text += "Character: %s\n" % string
 	CInfo.text += "Color: %s" % str(global.palettes[index]["palette"])
 
-func update_palette_count(value: int = 1):
-	for palette in global.palettes:
-		match palette["character"]:
-			0: global.config_values["goto_num"] += value
-			1: global.config_values["yoyo_num"] += value
-			2: global.config_values["kero_num"] += value
-			3: global.config_values["sword_num"] += value
-			4: global.config_values["darkgoto_num"] += value
-			5: global.config_values["slime_num"] += value
-			6: global.config_values["time_num"] += value
-			7: global.config_values["scythe_num"] += value
 
 func update_overall_infographic():
 	OInfo.text = "Total number of Palettes: %d\n" % len(global.palettes)
+	var count = global.get_palette_nums()
 	for i in range(7):
 		var string
 		match (i):
@@ -51,7 +41,7 @@ func update_overall_infographic():
 			5: string = "Slime Bros"
 			6: string = "Vince Volt"
 			7: string = "Reaper Angel"
-		OInfo.text += "Number of %s Palettes: %d\n" % [string, global.config_values[global.char_int_to_str(i) + "_num"]]
+		OInfo.text += "Number of %s Palettes: %d\n" % [string, count[global.char_int_to_str(i) + "_num"]]
 
 func _ready():
 	var accepted_states = [global.SAVE_PALETTE, global.EDITING_SESSION, global.EXPORT]
@@ -67,7 +57,6 @@ func _ready():
 				6: ItemList.add_item("Vince Volt - %s" % item["name"], load("res://Assets/portrait/sword.png"))
 				7: ItemList.add_item("Reaper Angel - %s" % item["name"], load("res://Assets/portrait/scythe.png"))
 		global.state = global.NONE
-		update_palette_count(1)
 		update_overall_infographic()
 	if global.palette_filename == null:
 		$Info/NameInput.text = "Untitled"
@@ -89,7 +78,6 @@ func _on_DeleteButton_pressed():
 		ItemList.remove_item(current_index)
 		global.palettes.remove(current_index)
 		current_index = null
-		update_palette_count(-1)
 		update_overall_infographic()
 
 func _on_ItemList_item_selected(index):
