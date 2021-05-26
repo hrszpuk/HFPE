@@ -69,10 +69,20 @@ func generate_palette_sections(config: ConfigFile) -> ConfigFile:
 		total_iterations = iterations
 	
 	# get the section keys for each sections and add any characters which are not in the sections
-#	for section in config.get_sections():
-#		for key in config.get_section_keys(section):
-#			pass
+	for section in config.get_sections():
+		if section != "options":
+			var character_set: Array = characters
+			for key in config.get_section_keys(section):
+				characters.erase(key)
+			for character in characters:
+				config.set_value(section, character, global.pal[global.char_int_to_str_proper(char_str_to_int(character))])
+		
 	return config
-	
 				
-			
+func char_str_to_int(string: String) -> int:
+	var index = 0
+	for character in ["goto", "yoyo", "kero", "time", "darkgoto", "slime", "sword", "scythe"]:
+		if string == character:
+			return index
+		index += 1
+	return -1		

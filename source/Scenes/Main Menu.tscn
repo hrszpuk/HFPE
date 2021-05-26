@@ -19,62 +19,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
-anchor_left = 0.18902
-anchor_top = 0.239449
-anchor_right = 0.81098
-anchor_bottom = 0.760551
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="CreateFileButton" type="Button" parent="Background/VBoxContainer"]
-margin_top = 118.0
-margin_right = 639.0
-margin_bottom = 138.0
-text = "Create New Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
-margin_top = 142.0
-margin_right = 639.0
-margin_bottom = 146.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EditCurrentFileButton" type="Button" parent="Background/VBoxContainer"]
-margin_top = 150.0
-margin_right = 639.0
-margin_bottom = 170.0
-rect_pivot_offset = Vector2( 177, 37.5 )
-text = "Edit Current Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator2" type="HSeparator" parent="Background/VBoxContainer"]
-margin_top = 174.0
-margin_right = 639.0
-margin_bottom = 178.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ImportFileButton" type="Button" parent="Background/VBoxContainer"]
-margin_top = 182.0
-margin_right = 639.0
-margin_bottom = 202.0
-text = "Import Palette File"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="FileDialog" type="FileDialog" parent="."]
-visible = true
 margin_left = 192.0
 margin_top = 83.0
 margin_right = 835.0
@@ -89,7 +34,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Background/VBoxContainer/CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/EditCurrentFileButton" to="." method="_on_EditCurrentFileButton_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/ImportFileButton" to="." method="_on_ImportFileButton_pressed"]
+[node name="Container" type="Container" parent="."]
+anchor_left = 0.176758
+anchor_top = 0.27
+anchor_right = 0.829102
+anchor_bottom = 0.715
+margin_bottom = 3.05176e-05
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CreateFileButton" type="Button" parent="Container"]
+margin_left = 13.0
+margin_top = 47.0
+margin_right = 653.0
+margin_bottom = 137.0
+text = "Create New Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImportFileButton" type="Button" parent="Container"]
+margin_left = 12.5023
+margin_top = 143.501
+margin_right = 652.502
+margin_bottom = 233.501
+text = "Import Palette File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="Container/CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
+[connection signal="pressed" from="Container/ImportFileButton" to="." method="_on_ImportFileButton_pressed"]

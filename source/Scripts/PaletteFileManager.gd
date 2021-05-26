@@ -70,8 +70,8 @@ func _on_NewButton_pressed():
 	var _scene = get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
 
 func _on_SaveMenuButton_pressed():
-	global.palette_filename = $Info/NameInput.text
-	global.save_palette()
+	global.state = global.EXPORT
+	var _scene = get_tree().change_scene("res://Scenes/ExportManager.tscn")
 
 func _on_DeleteButton_pressed():
 	if current_index != null:
@@ -100,8 +100,3 @@ func _on_ItemList_item_activated(index):
 func _on_DeleteMenuButton_pressed():
 	var dir = Directory.new()
 	dir.remove("user://%s.cfg" % $Info/NameInput.text)
-
-
-func _on_ExportMenuButton_pressed():
-	global.state = global.EXPORT
-	var _scene = get_tree().change_scene("res://Scenes/ExportManager.tscn")

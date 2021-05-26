@@ -3,10 +3,8 @@ extends Control
 func _ready():
 	get_info_content()
 
-
 func _on_BackButton_pressed():
 	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
-
 
 func _on_Enabled_toggled(button_pressed):
 	global.enabled = button_pressed
@@ -32,3 +30,5 @@ func _on_ExportButton_pressed():
 	var err = config.save("user://"+global.palette_filename+".cfg")
 	if err != OK:
 		print("SHIT")
+	global.state = global.EXPORT
+	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")

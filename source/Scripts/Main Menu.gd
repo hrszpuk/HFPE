@@ -4,6 +4,7 @@ onready var dialog = $FileDialog
 
 var path = "%APPDATA%/HYPERFIGHT/"
 var path2 = "%USERPROFILE%/AppData/Roaming/Godot/app_userdata/Hyperfight Palette Editor"
+var file_path: String = ""
 
 func _on_CreateFileButton_pressed():
 	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
@@ -28,7 +29,7 @@ func _on_ImportFileButton_pressed():
 
 func _on_FileDialog_confirmed():
 	var data = {
-		filename = dialog.get_current_file(),
+		filename = file_path,
 		path = dialog.get_current_path()
 	}
 	print(dialog.get_current_dir())
@@ -36,3 +37,7 @@ func _on_FileDialog_confirmed():
 	global.imported_data = data
 	global.load_config(data.path)
 	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
+
+
+func _on_FileDialog_file_selected(path):
+	file_path = path

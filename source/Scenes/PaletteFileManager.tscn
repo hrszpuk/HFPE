@@ -185,16 +185,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExportMenuButton" type="Button" parent="MenuButtons"]
-margin_left = 117.0
-margin_top = 5.0
-margin_right = 197.0
-margin_bottom = 65.0
-text = "Export"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BackButton" type="Button" parent="MenuButtons"]
 margin_left = 324.0
 margin_top = 5.0
@@ -222,6 +212,5 @@ __meta__ = {
 [connection signal="pressed" from="PaletteList/Buttons/EditButton" to="." method="_on_EditButton_pressed"]
 [connection signal="pressed" from="PaletteList/Buttons/DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="pressed" from="MenuButtons/SaveMenuButton" to="." method="_on_SaveMenuButton_pressed"]
-[connection signal="pressed" from="MenuButtons/ExportMenuButton" to="." method="_on_ExportMenuButton_pressed"]
 [connection signal="pressed" from="MenuButtons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MenuButtons/DeleteMenuButton" to="." method="_on_DeleteMenuButton_pressed"]
