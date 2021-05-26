@@ -31,6 +31,8 @@ func _on_FileDialog_confirmed():
 		filename = dialog.get_current_file(),
 		path = dialog.get_current_path()
 	}
+	print(dialog.get_current_dir())
+	print(dialog.get_current_path())
 	global.imported_data = data
-	global.load_config()
+	global.load_config(data.path)
 	get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")

@@ -4,7 +4,8 @@ enum {
 	NONE, 
 	SAVE_PALETTE,
 	EDITING_SESSION,
-	EXPORT
+	EXPORT,
+	IMPORT
 }
 
 var passing_index = null
@@ -51,38 +52,13 @@ func load_palette():
 	palettes = config.get_value("Data", "palettes", null)
 
 func generate_palette_config():
-	var config = ConfigFile.new()
-	config_values = get_palette_nums()
-	
-	var highest_character_count = {character = "null", count = 0}
-	for key in config_values.keys():
-		config.set_value("options", str(key), config_values[str(key)])
-		if config_values[str(key)] > highest_character_count["count"]:
-			highest_character_count["count"] = config_values[str(key)]
-			highest_character_count["character"] = str(key)
-	config.set_value("options", "enabled", enabled)
-	
-	var character_name = highest_character_count["character"].replace("_num", "")
-	for i in range(highest_character_count["count"]):
-		config.set_value("custom%d" % (i+1), character_name, find_char_in_palette(character_name)[i-1]["palette"])
-	
-	var count = 0
-	for palette in palettes:
-		for i in range(highest_character_count["count"]):
-			if not config.has_section_key("custom%d" % (i+1), char_int_to_str(palette["character"])):
-				config.set_value("custom%d" % (i+1), char_int_to_str(palette["character"]), palette["palette"])
-				palettes.remove(count)
-		count += 1
-	
-	# for section in section: if character not in section, add default character to section
-	for i in range(highest_character_count["count"]):
-		for j in range(8):
-			if not config.has_section_key("custom%d" % (i+1), char_int_to_str(j)):
-				config.set_value("custom%d" % (i+1), char_int_to_str(j), pal[char_int_to_str_proper(j)])
-			
+	var generator: PaletteGenerator = PaletteGenerator.new()
+	generator.import_data(palettes)
+	var config: ConfigFile = ConfigFile.new()
+	config = generator.generate_option_section(config)
+	config = generator.generate_palette_sections(config)
 	return config
 	
-			
 func char_int_to_str(num: int):
 	var string
 	match (num):
@@ -140,13 +116,10 @@ func get_palette_nums() -> Dictionary:
 			7: output["scythe_num"] += 1
 	return output
 	
-func load_config():
-	var config = ConfigFile.new()
-	config.load(imported_data.path)
+func load_config(data: String):
+	var reader: PaletteReader = PaletteReader.new(data)
+	palettes = reader.read_config()
 	
-	for section in config.get_sections():
-		print(section)
-		print(config.get_section_keys())
 	
 
 #	for key in config_values.keys():

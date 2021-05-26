@@ -74,6 +74,7 @@ __meta__ = {
 }
 
 [node name="FileDialog" type="FileDialog" parent="."]
+visible = true
 margin_left = 192.0
 margin_top = 83.0
 margin_right = 835.0
@@ -81,6 +82,7 @@ margin_bottom = 483.0
 window_title = "Open a File"
 mode = 0
 access = 2
+show_hidden_files = true
 current_dir = "/"
 current_path = "/"
 __meta__ = {

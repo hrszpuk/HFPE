@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "PaletteGenerator",
+"language": "GDScript",
+"path": "res://PaletteGenerator.gd"
+}, {
+"base": "Node",
+"class": "PaletteReader",
+"language": "GDScript",
+"path": "res://PaletteReader.gd"
+} ]
+_global_script_class_icons={
+"PaletteGenerator": "",
+"PaletteReader": ""
+}
+
 [application]
 
 config/name="Hyperfight Palette Editor"
@@ -20,6 +36,7 @@ config/icon="res://Assets/logo.png"
 [autoload]
 
 global="*res://global.gd"
+palette="*res://PaletteGenerator.gd"
 
 [display]
 

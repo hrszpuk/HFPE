@@ -44,7 +44,7 @@ func update_overall_infographic():
 		OInfo.text += "Number of %s Palettes: %d\n" % [string, count[global.char_int_to_str(i) + "_num"]]
 
 func _ready():
-	var accepted_states = [global.SAVE_PALETTE, global.EDITING_SESSION, global.EXPORT]
+	var accepted_states = [global.SAVE_PALETTE, global.EDITING_SESSION, global.EXPORT, global.IMPORT]
 	if global.state in accepted_states:
 		for item in global.palettes:
 			match item["character"]:
