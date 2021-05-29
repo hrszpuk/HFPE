@@ -60,22 +60,20 @@ func get_highest_count() -> Dictionary:
 		
 
 func generate_palette_sections(config: ConfigFile) -> ConfigFile:
-	var total_iterations: int = 0
 	for character in character_palettes.keys():
 		var iterations: int = 0
 		for array in character_palettes[character]:
 			iterations += 1
 			config.set_value("custom%d" % iterations, character, array)
-		total_iterations = iterations
 	
 	# get the section keys for each sections and add any characters which are not in the sections
-	for section in config.get_sections():
-		if section != "options":
-			var character_set: Array = characters
-			for key in config.get_section_keys(section):
-				characters.erase(key)
-			for character in characters:
-				config.set_value(section, character, global.pal[global.char_int_to_str_proper(char_str_to_int(character))])
+	if global.generate_defualts:
+		for section in config.get_sections():
+			if section != "options":
+				for key in config.get_section_keys(section):
+					characters.erase(key)
+				for character in characters:
+					config.set_value(section, character, global.pal[global.char_int_to_str_proper(char_str_to_int(character))])
 		
 	return config
 				

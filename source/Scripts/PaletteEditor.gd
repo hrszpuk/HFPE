@@ -8,19 +8,23 @@ onready var SuperSprite = $MoveContainer/SuperPanel/SuperSprite
 onready var CharacterSprite = $CharacterContainer/CharacterPanel/CharacterSprite
 onready var ColorList = $MoveContainer/ColorList
 onready var CharacterSelect = $CharacterContainer/CharacterSelect
+onready var rng = RandomNumberGenerator.new()
 
 func _ready():
 	if global.passing_index == null:
-		for color in global.pal["Shoto_Goto"]:
+		var ch = global.char_int_to_str_proper(global.start_character)
+		for color in global.pal[ch]:
 			ColorList.add_item(color, null, true)
+		ch = ch.replace("_", " ")
 		$CharacterContainer/PaletteNameInput.text = "Unnamed"
-		CharacterSprite.set_animation("Shoto Goto Idle")
-		AttackSprite.set_animation("Shoto Goto Attack")
-		SuperSprite.set_animation("Shoto Goto Super")
-		set_shader_settings(0)
+		CharacterSprite.set_animation("%s Idle" % ch)
+		AttackSprite.set_animation("%s Attack" % ch)
+		SuperSprite.set_animation("%s Super" % ch)
+		set_shader_settings(global.start_character)
 		current_index = 0
-		character_index = 0
-		CharacterSprite.material.set("shader_param/threshold", 0.001)#
+		character_index = global.start_character
+		CharacterSelect.select(global.start_character)
+		CharacterSprite.material.set("shader_param/threshold", 0.001)
 	else:
 		$CharacterContainer/PaletteNameInput.text = global.palettes[global.passing_index]["name"]
 		CharacterSelect.selected = global.palettes[global.passing_index]["character"]
@@ -135,3 +139,13 @@ func str_array_to_color_array(array) -> Array:
 		color_array.append(Color(item))
 	return color_array
 
+
+
+func _on_RandomiseButton_pressed():
+	for i in range(ColorList.get_item_count()):
+		rng.randomize()
+		var color: Color = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
+		ColorList.set_item_text(i, color.to_html())
+		CharacterSprite.material.set("shader_param/color_n%d" % i, color)
+		AttackSprite.material.set("shader_param/color_n%d" % i, color)
+		SuperSprite.material.set("shader_param/color_n%d" % i, color)

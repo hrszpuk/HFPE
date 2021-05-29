@@ -35,10 +35,10 @@ __meta__ = {
 }
 
 [node name="Container" type="Container" parent="."]
-anchor_left = 0.176758
-anchor_top = 0.27
-anchor_right = 0.829102
-anchor_bottom = 0.715
+anchor_left = 0.176584
+anchor_top = 0.107757
+anchor_right = 0.828927
+anchor_bottom = 0.789423
 margin_bottom = 3.05176e-05
 __meta__ = {
 "_edit_use_anchors_": true
@@ -64,7 +64,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SettingsButton" type="Button" parent="Container"]
+margin_left = 12.6808
+margin_top = 240.847
+margin_right = 652.681
+margin_bottom = 330.847
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="pressed" from="Container/CreateFileButton" to="." method="_on_CreateFileButton_pressed"]
 [connection signal="pressed" from="Container/ImportFileButton" to="." method="_on_ImportFileButton_pressed"]
+[connection signal="pressed" from="Container/SettingsButton" to="." method="_on_SettingsButton_pressed"]

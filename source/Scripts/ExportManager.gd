@@ -27,8 +27,8 @@ func get_info_content():
 
 func _on_ExportButton_pressed():
 	var config = global.generate_palette_config()
-	var err = config.save("user://"+global.palette_filename+".cfg")
+	var err = config.save(global.default_path+"/palettes/"+global.palette_filename+".cfg")
 	if err != OK:
-		print("SHIT")
+		print(err)
 	global.state = global.EXPORT
 	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")

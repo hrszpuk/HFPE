@@ -8,9 +8,14 @@ enum {
 	IMPORT
 }
 
+var read_defualts: bool = false
+var generate_defualts: bool = true
+var start_character: int = 0
+var default_path: String = "user://HFPE/"
+var operating_system: String = OS.get_name()
 var passing_index = null
 var state = NONE
-var palette_filename = "Untitled"
+var palette_filename: String = "Untitled"
 var imported_data = null
 
 # Palette config generation:
@@ -38,14 +43,42 @@ var pal = {
 	Reaper = [ "ff95a0", "e16d90", "c46565", "8c3849", "214a55", "11232a", "3b3535", "1e1e1e", "fbeaea", "e1a5b1", "a2ddb4", "ffccdb", "f2dac2", "d4a483", "ee234c", "591d23", "191516" ],
 }
 
-var palettes = []
+var palettes: Array = []
+
+func save_to_config():
+	var settings: ConfigFile = ConfigFile.new()
+	settings.set_value("settings", "start_character", start_character)
+	settings.set_value("settings", "defualt_palette_filename", palette_filename)
+	settings.set_value("settings", "generate_defualts", generate_defualts)
+	settings.set_value("settings", "read_defualts", read_defualts)
+	settings.save(default_path+"/settings.cfg")
+
+func _ready():
+	var dir = Directory.new()
+	dir.open("user://")
+	dir.make_dir("HFPE")
+	dir.make_dir("HFPE/palettes")
+	var settings: ConfigFile = ConfigFile.new()
+	if settings.load(default_path+"/settings.cfg") == OK:
+		start_character = settings.get_value("settings", "start_character")
+		palette_filename = settings.get_value("settings", "defualt_palette_filename")
+		generate_defualts = settings.get_value("settings", "generate_defualts")
+		read_defualts = settings.get_value("settings", "read_defualts")
+	else:
+		settings.set_value("settings", "start_character", start_character)
+		settings.set_value("settings", "defualt_palette_filename", palette_filename)
+		settings.set_value("settings", "generate_defualts", generate_defualts)
+		settings.set_value("settings", "read_defualts", read_defualts)
+		var err = settings.save(default_path+"/settings.cfg")
+		print(err)
+		
+	
 
 func save_palette():
-	var config = ConfigFile.new()
+	var config: ConfigFile = ConfigFile.new()
 	config.set_value("Data", "palettes", palettes)
 	var _err = config.save("user://%s.cfg" % palette_filename)
 	
-
 func load_palette():
 	var config = ConfigFile.new()
 	config.load("user://palette.cfg")

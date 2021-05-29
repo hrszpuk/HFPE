@@ -20,12 +20,22 @@ func read_config() -> Array:
 	
 	for section in config.get_sections():
 		for key in config.get_section_keys(section):
-			var character_palette = {
-				name = "Unnamed",
-				character = char_str_to_int(key),
-				palette = config.get_value(section, key)
-			}
-			data.append(character_palette)
+			var default_palette = global.pal[global.char_int_to_str_proper(char_str_to_int(key))]
+			var current_palette = config.get_value(section, key)
+			if current_palette != default_palette and !global.read_defualts:
+				var character_palette = {
+					name = "Unnamed",
+					character = char_str_to_int(key),
+					palette = config.get_value(section, key)
+				}
+				data.append(character_palette)
+			else:
+				var character_palette = {
+					name = "Unnamed",
+					character = char_str_to_int(key),
+					palette = config.get_value(section, key)
+				}
+				data.append(character_palette)
 	global.state = global.IMPORT
 	return data
 	

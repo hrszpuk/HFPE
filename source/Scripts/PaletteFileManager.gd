@@ -64,6 +64,7 @@ func _ready():
 		$Info/NameInput.text = global.palette_filename
 
 func _on_BackButton_pressed():
+	global.palettes.clear()
 	var _scene = get_tree().change_scene("res://Scenes/Main Menu.tscn")
 
 func _on_NewButton_pressed():
@@ -98,5 +99,8 @@ func _on_ItemList_item_activated(index):
 	var _scene = get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
 
 func _on_DeleteMenuButton_pressed():
-	var dir = Directory.new()
-	dir.remove("user://%s.cfg" % $Info/NameInput.text)
+	var dir: Directory = Directory.new()
+	var _err = dir.remove(global.default_path+"/palettes/%s.cfg" % $Info/NameInput.text)
+
+func _on_NameInput_text_changed(new_text):
+	global.palette_filename = new_text

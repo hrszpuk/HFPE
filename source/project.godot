@@ -31,7 +31,7 @@ config/description="Application which make it easier to edit Hyperfight palette 
 "
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="HYPERFIGHT/HFPE"
+config/custom_user_dir_name="HYPERFIGHT"
 run/low_processor_mode=true
 config/icon="res://Assets/logo.png"
 
