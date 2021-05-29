@@ -27,7 +27,11 @@ func get_info_content():
 
 func _on_ExportButton_pressed():
 	var config = global.generate_palette_config()
-	var err = config.save(global.default_path+"/palettes/"+global.palette_filename+".cfg")
+	var err: int
+	if global.save_to_path:
+		err = config.save(global.imported_data["path"])
+	else:
+		err = config.save(global.default_path+"/palettes/"+global.palette_filename+".cfg")
 	if err != OK:
 		print(err)
 	global.state = global.EXPORT

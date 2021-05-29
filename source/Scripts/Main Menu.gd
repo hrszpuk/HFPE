@@ -21,13 +21,12 @@ func _on_FileDialog_confirmed():
 		path = dialog.get_current_path()
 	}
 	global.imported_data = data
+	global.palette_filename = data.filename
 	global.load_config(data.path)
 	var _scene = get_tree().change_scene("res://Scenes/PaletteFileManager.tscn")
 
-
 func _on_FileDialog_file_selected(path):
 	file_path = path
-
 
 func _on_SettingsButton_pressed():
 	var _scene = get_tree().change_scene("res://Scenes/SettingsMenu.tscn")

@@ -45,6 +45,8 @@ func update_overall_infographic():
 
 func _ready():
 	var accepted_states = [global.SAVE_PALETTE, global.EDITING_SESSION, global.EXPORT, global.IMPORT]
+	if global.state == global.IMPORT:
+		global.save_to_path = true
 	if global.state in accepted_states:
 		for item in global.palettes:
 			match item["character"]:
