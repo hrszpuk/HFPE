@@ -3,7 +3,7 @@ extends Control
 onready var IconContent = $IconContent
 
 func _ready():
-	load_icon_content()
+	pass
 	
 
 func generate_icon_content() -> ImageTexture:
@@ -17,4 +17,5 @@ func load_icon_content():
 	# look for icon link in config:
 	# if found load it from user://
 	# else set it to generate_icon_content()
-	IconContent.texture = generate_icon_content()
+	#IconContent.texture = generate_icon_content()
+	pass
