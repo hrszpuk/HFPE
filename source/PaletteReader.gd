@@ -4,6 +4,8 @@ class_name PaletteReader
 var config: ConfigFile
 
 func _init(path: String):
+	global.logger.set_prefix("PaletteReader")
+	global.logger.write("Initialised!")
 	config = ConfigFile.new()
 	print("C:" + path)
 	var err = config.load("C:" + path)
@@ -11,6 +13,8 @@ func _init(path: String):
 		print("SHIT")
 
 func read_config() -> Array:
+	global.logger.set_prefix("PaletteReader")
+	global.logger.write("Calling read_config()")
 	# for each section: read character and palette, check if palette is default, add name, add to array
 	var data: Array = []
 	if config.has_section("options"):
@@ -40,6 +44,8 @@ func read_config() -> Array:
 	return data
 	
 func char_str_to_int(string: String) -> int:
+	global.logger.set_prefix("PaletteReader")
+	global.logger.write("Calling char_str_to_int")
 	var index = 0
 	for character in ["goto", "yoyo", "kero", "time", "darkgoto", "slime", "sword", "scythe"]:
 		if string == character:

@@ -10,7 +10,7 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "LogManager",
+"class": "Logger",
 "language": "GDScript",
 "path": "res://LogManager.gd"
 }, {
@@ -25,7 +25,7 @@ _global_script_classes=[ {
 "path": "res://PaletteReader.gd"
 } ]
 _global_script_class_icons={
-"LogManager": "",
+"Logger": "",
 "PaletteGenerator": "",
 "PaletteReader": ""
 }
@@ -45,6 +45,7 @@ config/icon="res://Assets/logo.png"
 
 global="*res://global.gd"
 palette="*res://PaletteGenerator.gd"
+LogManager="*res://LogManager.gd"
 
 [display]
 

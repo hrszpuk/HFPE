@@ -19,6 +19,7 @@ var passing_index = null
 var state = NONE
 var palette_filename: String = "Untitled"
 var imported_data = null
+onready var logger: Logger = Logger.new()
 
 # Palette config generation:
 var config_values = {
@@ -48,25 +49,33 @@ var pal = {
 var palettes: Array = []
 
 func save_to_config():
+	prefix()
+	logger.write("Calling save_to_config()")
 	var settings: ConfigFile = ConfigFile.new()
 	settings.set_value("settings", "start_character", start_character)
 	settings.set_value("settings", "defualt_palette_filename", palette_filename)
 	settings.set_value("settings", "generate_defualts", generate_defualts)
 	settings.set_value("settings", "read_defualts", read_defualts)
 	settings.save(default_path+"/settings.cfg")
+	logger.write("^^^ Saved settings.cfg")
 
 func _ready():
+	prefix()
+	logger.write("Ready!")
 	var dir = Directory.new()
 	dir.open("user://")
+	logger.write("Opening user://")
 	dir.make_dir("HFPE")
 	dir.make_dir("HFPE/palettes")
 	dir.make_dir("HFPE/logs")
+	logger.write("Making HFPE directories")
 	var settings: ConfigFile = ConfigFile.new()
 	if settings.load(default_path+"/settings.cfg") == OK:
 		start_character = settings.get_value("settings", "start_character")
 		palette_filename = settings.get_value("settings", "defualt_palette_filename")
 		generate_defualts = settings.get_value("settings", "generate_defualts")
 		read_defualts = settings.get_value("settings", "read_defualts")
+		logger.write("Loaded settings.cfg")
 	else:
 		settings.set_value("settings", "version", version)
 		settings.set_value("settings", "start_character", start_character)
@@ -74,29 +83,41 @@ func _ready():
 		settings.set_value("settings", "generate_defualts", generate_defualts)
 		settings.set_value("settings", "read_defualts", read_defualts)
 		var err = settings.save(default_path+"/settings.cfg")
-		print(err)
-		
-	
+		logger.write("Created settings.cfg")
 
 func save_palette():
+	prefix()
+	logger.write("Calling save_palette()")
 	var config: ConfigFile = ConfigFile.new()
 	config.set_value("Data", "palettes", palettes)
 	var _err = config.save("user://%s.cfg" % palette_filename)
+	logger.write("^^^ Saved raw palette data to %s.cfg" % palette_filename)
 	
 func load_palette():
+	prefix()
+	logger.write("Calling load_palette()")
 	var config = ConfigFile.new()
 	config.load("user://palette.cfg")
 	palettes = config.get_value("Data", "palettes", null)
+	logger.write("^^^ Loaded palette.cfg")
 
 func generate_palette_config():
+	prefix()
+	logger.write("Calling generate_palette_config()")
 	var generator: PaletteGenerator = PaletteGenerator.new()
 	generator.import_data(palettes)
 	var config: ConfigFile = ConfigFile.new()
 	config = generator.generate_option_section(config)
 	config = generator.generate_palette_sections(config)
+	logger.write("")
 	return config
 	
+func prefix():
+	logger.set_prefix("Global")
+	
 func char_int_to_str(num: int):
+	prefix()
+	logger.write("Calling char_int_to_str()")
 	var string
 	match (num):
 		0: string = "goto"
@@ -110,6 +131,8 @@ func char_int_to_str(num: int):
 	return string
 	
 func char_int_to_str_proper(num: int) -> String:
+	prefix()
+	logger.write("Calling char_int_to_str_proper()")
 	var string
 	match (num):
 		0: string = "Shoto_Goto"
@@ -123,6 +146,8 @@ func char_int_to_str_proper(num: int) -> String:
 	return string
 	
 func find_char_in_palette(character):
+	prefix()
+	logger.write("Calling find_char_in_palette()")
 	var values = []
 	for palette in palettes:
 		if char_int_to_str(palette["character"]) == character:
@@ -131,6 +156,8 @@ func find_char_in_palette(character):
 	
 	
 func get_palette_nums() -> Dictionary:
+	prefix()
+	logger.write("Calling get_palette_nums()")
 	var output = {
 		goto_num = 0, 
 		yoyo_num = 0, 
@@ -154,6 +181,8 @@ func get_palette_nums() -> Dictionary:
 	return output
 	
 func load_config(data: String):
+	prefix()
+	logger.write("Calling load_config()")
 	var reader: PaletteReader = PaletteReader.new(data)
 	palettes = reader.read_config()
 	
@@ -173,12 +202,16 @@ func load_config(data: String):
 #	palettes = new_palettes
 	
 func get_data_from_section(config: ConfigFile, section: String) -> Array:
+	prefix()
+	logger.write("Calling get_data_from_section()")
 	var output = []
 	for key in config.get_section_keys(section):
 		output.append(config.get_value(section, key))
 	return output
 
 func matches_default_character_set(data) -> bool:
+	prefix()
+	logger.write("Calling matches_default_character_set()")
 	for value in pal:
 		if value == data:
 			return true
