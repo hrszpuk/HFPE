@@ -103,14 +103,14 @@ margin_left = 19.7418
 margin_top = 184.904
 margin_right = 184.742
 margin_bottom = 208.904
-text = "Read Defualt Palettes"
+text = "Read Default Palettes"
 
 [node name="GenerateDefualtPalettes" type="CheckBox" parent="MainContainer"]
 margin_left = 18.6824
 margin_top = 142.525
 margin_right = 211.682
 margin_bottom = 171.525
-text = "Generate Defualt Palettes"
+text = "Generate Default Palettes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,7 +129,7 @@ margin_left = -5.41901
 margin_top = 40.0324
 margin_right = 160.581
 margin_bottom = 62.0324
-text = "Defualt Character:"
+text = "Default Character:"
 align = 1
 valign = 1
 __meta__ = {
@@ -141,7 +141,7 @@ margin_left = 20.8014
 margin_top = 96.9681
 margin_right = 186.801
 margin_bottom = 118.968
-text = "Defualt Palette Filename: "
+text = "Default Palette Filename: "
 align = 1
 valign = 1
 __meta__ = {

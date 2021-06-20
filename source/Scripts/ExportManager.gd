@@ -30,8 +30,10 @@ func _on_ExportButton_pressed():
 	var err: int
 	if global.save_to_path:
 		err = config.save(global.imported_data["path"])
+		OS.shell_open(str("file://", global.imported_data["path"]))
 	else:
 		err = config.save(global.default_path+"/palettes/"+global.palette_filename+".cfg")
+		OS.shell_open(str("file://", global.default_path+"/palettes/"+global.palette_filename+".cfg"))
 	if err != OK:
 		print(err)
 	global.state = global.EXPORT

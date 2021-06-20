@@ -8,6 +8,7 @@ enum {
 	IMPORT
 }
 
+var version: String = "0.1.5"
 var save_to_path: bool = false
 var read_defualts: bool = false
 var generate_defualts: bool = true
@@ -59,6 +60,7 @@ func _ready():
 	dir.open("user://")
 	dir.make_dir("HFPE")
 	dir.make_dir("HFPE/palettes")
+	dir.make_dir("HFPE/logs")
 	var settings: ConfigFile = ConfigFile.new()
 	if settings.load(default_path+"/settings.cfg") == OK:
 		start_character = settings.get_value("settings", "start_character")
@@ -66,6 +68,7 @@ func _ready():
 		generate_defualts = settings.get_value("settings", "generate_defualts")
 		read_defualts = settings.get_value("settings", "read_defualts")
 	else:
+		settings.set_value("settings", "version", version)
 		settings.set_value("settings", "start_character", start_character)
 		settings.set_value("settings", "defualt_palette_filename", palette_filename)
 		settings.set_value("settings", "generate_defualts", generate_defualts)
