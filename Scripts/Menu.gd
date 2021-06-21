@@ -1,21 +1,18 @@
 extends Control
 
-onready var IconContent = $IconContent
+onready var palette_menu_button = $PaletteMenuButton
+onready var config_menu_button = $ConfigMenuButton
+onready var settings_menu_button = $SettingsMenuButton
+onready var network_menu_button = $NetworkMenuButton
+onready var library_menu_button = $LibraryMenuButton
 
-func _ready():
-	pass
-	
 
-func generate_icon_content() -> ImageTexture:
-	# generates a white ImageTexture and returns it
-	var img: ImageTexture = ImageTexture.new()
-	img.create(2, 2, 4)
-	return img
-	
+func _ready() -> void:
+	setup_buttons()
 
-func load_icon_content():
-	# look for icon link in config:
-	# if found load it from user://
-	# else set it to generate_icon_content()
-	#IconContent.texture = generate_icon_content()
-	pass
+func setup_buttons() -> void:
+	palette_menu_button.set_text("Create Palettes")
+	config_menu_button.set_text("Edit config")
+	settings_menu_button.set_text("Settings")
+	network_menu_button.set_text("Palette Network")
+	library_menu_button.set_text("Library")
