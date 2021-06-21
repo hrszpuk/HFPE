@@ -67,7 +67,7 @@ position = Vector2( 511, 300 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
 animation = "sword"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Character" type="AnimatedSprite" parent="."]
@@ -75,7 +75,6 @@ position = Vector2( 138.591, 403.175 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 10 )
 animation = "sword"
-frame = 3
 playing = true
 
 [node name="PaletteMenuButton" parent="." instance=ExtResource( 3 )]

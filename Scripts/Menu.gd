@@ -10,9 +10,18 @@ onready var library_menu_button = $LibraryMenuButton
 func _ready() -> void:
 	setup_buttons()
 
+
 func setup_buttons() -> void:
 	palette_menu_button.set_text("Create Palettes")
+	palette_menu_button.set_color(Color(1, 1, 1))
+	
 	config_menu_button.set_text("Edit config")
+	
+	
 	settings_menu_button.set_text("Settings")
+	
+	
 	network_menu_button.set_text("Palette Network")
+	
+	
 	library_menu_button.set_text("Library")
