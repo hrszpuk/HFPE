@@ -1,5 +1,5 @@
 extends Control
-onready var button = $Button
+
 onready var label = $Label
 
 

@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Logger",
+"language": "GDScript",
+"path": "res://Scripts/LogManager.gd"
+}, {
+"base": "Node",
+"class": "PaletteGenerator",
+"language": "GDScript",
+"path": "res://Scripts/PaletteGenerator.gd"
+}, {
+"base": "Node",
+"class": "PaletteReader",
+"language": "GDScript",
+"path": "res://Scripts/PaletteReader.gd"
+} ]
+_global_script_class_icons={
+"Logger": "",
+"PaletteGenerator": "",
+"PaletteReader": ""
+}
+
 [application]
 
 config/name="Hyperfight Palette Editor"
