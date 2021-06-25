@@ -33,6 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Hyperfight Palette Editor"
+config/description="A graphical editor for manipulating, managing, and sharing palette configuration files for the one hit fighting game, HYPERFIGHT."
 run/main_scene="res://Scenes/Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="HYPERFIGHT"
@@ -42,6 +43,18 @@ boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 [autoload]
 
 Global="*res://Scripts/global.gd"
+Autoload="*res://autoload.gd"
+Netload="*res://netload.gd"
+
+[display]
+
+window/size/resizable=false
+
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="user://HFPE/logs/godot.log"
+file_logging/max_log_files=10
 
 [physics]
 
@@ -49,4 +62,8 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"
