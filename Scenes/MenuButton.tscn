@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/ui/ui_button.png" type="Texture" id=1]
+[ext_resource path="res://Assets/ui/button.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/MenuButton.gd" type="Script" id=2]
 [ext_resource path="res://Resources/palette.tres" type="Material" id=3]
 

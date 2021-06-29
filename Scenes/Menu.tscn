@@ -22,7 +22,7 @@ region = Rect2( 512, 0, 256, 150 )
 atlas = ExtResource( 1 )
 region = Rect2( 768, 0, 256, 150 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
@@ -46,7 +46,7 @@ region = Rect2( 128, 0, 64, 64 )
 atlas = ExtResource( 2 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
@@ -65,17 +65,17 @@ __meta__ = {
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 511, 300 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 10 )
+frames = SubResource( 5 )
 animation = "sword"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Character" type="AnimatedSprite" parent="."]
 position = Vector2( 138.591, 403.175 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 animation = "sword"
-frame = 1
+frame = 3
 playing = true
 
 [node name="PaletteMenuButton" parent="." instance=ExtResource( 3 )]
@@ -83,40 +83,40 @@ anchor_left = 0.366
 anchor_top = 0.37
 anchor_right = 0.609
 anchor_bottom = 0.722
-margin_left = -96.9732
-margin_top = -98.4057
-margin_right = 30.1948
-margin_bottom = -97.6058
+margin_left = -96.784
+margin_top = -98.0
+margin_right = -20.616
+margin_bottom = -97.2
 
 [node name="ConfigMenuButton" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.366
 anchor_top = 0.37
 anchor_right = 0.609
 anchor_bottom = 0.722
-margin_left = 91.0268
-margin_top = 122.594
-margin_right = 111.195
-margin_bottom = 122.394
+margin_left = 110.216
+margin_top = 123.0
+margin_right = 111.384
+margin_bottom = 122.8
 
 [node name="SettingsMenuButton" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.366
 anchor_top = 0.37
 anchor_right = 0.609
 anchor_bottom = 0.722
-margin_left = -94.9732
-margin_top = 122.594
-margin_right = -167.805
-margin_bottom = 122.394
+margin_left = -94.784
+margin_top = 123.0
+margin_right = -150.616
+margin_bottom = 122.8
 
 [node name="NetworkMenuButton" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.366
 anchor_top = 0.37
 anchor_right = 0.609
 anchor_bottom = 0.722
-margin_left = 288.027
-margin_top = -100.406
-margin_right = 327.195
-margin_bottom = -97.6058
+margin_left = 241.216
+margin_top = -100.0
+margin_right = 327.384
+margin_bottom = -97.2
 
 [node name="LibraryMenuButton" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.366
