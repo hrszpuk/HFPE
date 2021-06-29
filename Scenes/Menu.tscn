@@ -22,7 +22,7 @@ region = Rect2( 512, 0, 256, 150 )
 atlas = ExtResource( 1 )
 region = Rect2( 768, 0, 256, 150 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
@@ -46,7 +46,7 @@ region = Rect2( 128, 0, 64, 64 )
 atlas = ExtResource( 2 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
@@ -65,16 +65,17 @@ __meta__ = {
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 511, 300 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 5 )
+frames = SubResource( 10 )
 animation = "sword"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Character" type="AnimatedSprite" parent="."]
 position = Vector2( 138.591, 403.175 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 10 )
+frames = SubResource( 11 )
 animation = "sword"
+frame = 1
 playing = true
 
 [node name="PaletteMenuButton" parent="." instance=ExtResource( 3 )]
@@ -141,3 +142,17 @@ text = "1.0.0 Prototype"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_left = 422.566
+margin_top = 32.9411
+margin_right = 552.566
+margin_bottom = 46.9411
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Main Menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PaletteMenuButton" to="." method="_on_PaletteMenuButton_pressed"]

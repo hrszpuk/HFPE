@@ -11,6 +11,8 @@ func _ready() -> void:
 	setup_buttons()
 
 
+
+
 func setup_buttons() -> void:
 	palette_menu_button.set_text("Create Palettes")
 	palette_menu_button.set_color(Color(1, 1, 1))
@@ -25,3 +27,7 @@ func setup_buttons() -> void:
 	
 	
 	library_menu_button.set_text("Library")
+
+
+func _on_PaletteMenuButton_pressed():
+	pass # Replace with function body.
