@@ -11,11 +11,11 @@
 [ext_resource path="res://Assets/yellow_button_normal.png" type="Texture" id=10]
 [ext_resource path="res://Resources/raw/Pixel Intv.otf" type="DynamicFontData" id=11]
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 11 )
 
@@ -93,7 +93,7 @@ margin_top = 9.98913
 margin_right = 974.638
 margin_bottom = 35.9891
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 1 )
 text = "v1.0.0 "
 align = 1
 valign = 1
@@ -107,7 +107,7 @@ margin_top = 32.9411
 margin_right = 552.566
 margin_bottom = 46.9411
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
 align = 1
 __meta__ = {
