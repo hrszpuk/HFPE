@@ -4,11 +4,8 @@ onready var label = $Label
 const COLOR: Color = Color.black
 
 func _ready() -> void:
-	print("test")
-	material.set_shader_param("color_o0", COLOR)
-	material.set_shader_param("color_n0", Color.red)
-	print("set shader")
-
+	pass
+	
 
 func set_text(text: String) -> void:
 	label.text = text

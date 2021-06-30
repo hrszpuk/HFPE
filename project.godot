@@ -34,11 +34,14 @@ _global_script_class_icons={
 
 config/name="Hyperfight Palette Editor"
 config/description="A graphical editor for manipulating, managing, and sharing palette configuration files for the one hit fighting game, HYPERFIGHT."
-run/main_scene="res://Scenes/Menu.tscn"
+run/main_scene="res://Scenes/Startup.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="HYPERFIGHT"
 run/low_processor_mode=true
-boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
+boot_splash/image="res://Assets/background.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 
 [autoload]
 

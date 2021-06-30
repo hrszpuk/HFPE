@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/ui/ui_author_icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/ui/default_author.png" type="Texture" id=2]
+[ext_resource path="res://Resources/raw/Savior1.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 3 )
 
 [node name="AuthorIcon" type="Sprite"]
 texture = ExtResource( 2 )
@@ -19,6 +27,7 @@ margin_left = 37.504
 margin_top = -6.104
 margin_right = 275.344
 margin_bottom = 24.168
+custom_fonts/font = SubResource( 1 )
 text = "Author Description"
 autowrap = true
 clip_text = true
@@ -31,10 +40,12 @@ anchor_left = 0.039
 anchor_top = -0.047
 anchor_right = 0.098
 anchor_bottom = -0.02
-margin_left = 38.2735
-margin_top = -23.3157
-margin_right = 147.498
-margin_bottom = -11.0437
+margin_left = 37.9908
+margin_top = -31.2327
+margin_right = 210.215
+margin_bottom = -6.96069
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 2 )
 text = "Author Username"
 valign = 1
 __meta__ = {
