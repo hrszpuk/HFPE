@@ -1,12 +1,30 @@
 extends Node
 
+# Palette data
+var palette_data = []
+var current_index = null
+
 # config.cfg variables
-var author_username = "Author Username"
-var author_icon = "author_icon.png"
-var author_description = "Author Description"
+onready var author_username = "Author Username"
+onready var author_icon = "author_icon.png"
+onready var author_description = "Author Description"
+
+# File data
+var palette_filename = "Untitled"
+
+# Palette Editor states
+enum {
+	PALETTE_EDITOR_EDIT,
+	PALETTE_EDITOR_NEW,
+	NONE,
+}
+onready var state = NONE
+
 
 func _ready():
-	pass
+	directory()
+	config()
+	data_config()
 
 
 # Autoloads the library, general settings, and the palette.cfg and config.cfg
@@ -38,28 +56,30 @@ func config():
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/config.cfg"):
 		var config: ConfigFile = ConfigFile.new()
-		config.load("HFPE/config.cfg")
-		config.get_value("Author Settings", "author_username", author_username)
-		config.get_value("Author Settings", "author_description", author_description)
-		config.get_value("Author Settings", "author_icon", author_icon)
+		config.load("user://HFPE/config.cfg")
+		author_username = config.get_value("Author Settings", "author_username", author_username)
+		author_description = config.get_value("Author Settings", "author_description", author_description)
+		author_icon = config.get_value("Author Settings", "author_icon", author_icon)
+		palette_filename = config.get_value("Librar Settings", "default_filename", palette_filename)
 	else:
 		# Generate config
 		var config: ConfigFile = ConfigFile.new()
 		config.set_value("Author Settings", "author_username", author_username)
 		config.set_value("Author Settings", "author_description", author_description)
 		config.set_value("Author Settings", "author_icon", author_icon)
-		config.save("HFPE/config.cfg")
+		config.set_value("Library Settings", "default_filename", palette_filename)
+		var err = config.save("user://HFPE/config.cfg")
 
 
 func data_config():
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/data/config.cfg"):
 		var config: ConfigFile = ConfigFile.new()
-		config.load("HFPE/data/config.cfg")
+		config.load("user://HFPE/data/config.cfg")
 	else:
 		# Generate config
 		var config: ConfigFile = ConfigFile.new()
-		config.save("HFPE/data/config.cfg")
+		config.save("user://HFPE/data/config.cfg")
 
 
 func directory():
@@ -70,3 +90,4 @@ func directory():
 	dir.make_dir("HFPE/data")
 	dir.make_dir("HFPE/data/assets")
 	dir.make_dir("mods")
+	

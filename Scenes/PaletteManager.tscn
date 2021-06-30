@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/raw/Savior1.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/red_stylebox.tres" type="StyleBox" id=6]
 [ext_resource path="res://Resources/hover_stylebox.tres" type="StyleBox" id=7]
 [ext_resource path="res://Resources/red_hover_stylebox.tres" type="StyleBox" id=8]
+[ext_resource path="res://Scripts/PaletteManager.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -39,6 +40,7 @@ font_data = ExtResource( 2 )
 [node name="PaletteManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -223,3 +225,10 @@ text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="nothing_selected" from="ItemList" to="." method="_on_ItemList_nothing_selected"]
+[connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="pressed" from="EditButton" to="." method="_on_EditButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="text_changed" from="NameInput" to="." method="_on_NameInput_text_changed"]
