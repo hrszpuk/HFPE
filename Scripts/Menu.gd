@@ -1,23 +1,25 @@
 extends Control
 
-onready var palette_menu_button = $PaletteMenuButton
-onready var config_menu_button = $ConfigMenuButton
-onready var settings_menu_button = $SettingsMenuButton
-onready var network_menu_button = $NetworkMenuButton
-onready var library_menu_button = $LibraryMenuButton
-onready var infographic = $AuthorInfographic
+onready var PaletteMenuButton = $PaletteMenuButton
+onready var ConfigMenuButton = $ConfigMenuButton
+onready var SettingsMenuButton = $SettingsMenuButton
+onready var NetworkMenuButton = $NetworkMenuButton
+onready var LibraryMenuButton = $LibraryMenuButton
+onready var Infographic = $AuthorInfographic
+onready var Background = $Background
 
 func _ready() -> void:
 	setup_buttons()
-	infographic.setup_infographic() # Settings infographic to data in global.gd
+	Background.reset_character()
+	Infographic.setup_infographic() # Settings infographic to data in global.gd
 
 
 func setup_buttons() -> void:
-	palette_menu_button.set_text("Create Palettes")
-	config_menu_button.set_text("Edit config")
-	settings_menu_button.set_text("Settings")
-	network_menu_button.set_text("Palette Network")
-	library_menu_button.set_text("Library")
+	PaletteMenuButton.set_text("Create Palettes")
+	ConfigMenuButton.set_text("Edit config")
+	SettingsMenuButton.set_text("Settings")
+	NetworkMenuButton.set_text("Palette Network")
+	LibraryMenuButton.set_text("Library")
 
 
 func _on_PaletteMenuButton_pressed():

@@ -8,16 +8,16 @@ onready var Infographic = $CurrentPaletteInfo
 
 func _ready():
 	NameInput.text = global.palette_filename
-	
-	
-func _on_NewButton_pressed():
-	global.state = global.PALETTE_EDITOR_NEW
-	var err = get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
+	$Background.reset_character()
 	
 	
 func offload_data():
 	# Saves data to global
 	pass
+
+
+func update_infographic():
+	Infographic.text = "Index: %d" % global.current_index
 
 
 func _on_DeleteButton_pressed():
@@ -45,5 +45,8 @@ func _on_NameInput_text_changed():
 	global.palette_filename = NameInput.text
 	
 	
-func update_infographic():
-	Infographic.text = "Index: %d" % global.current_index
+func _on_NewButton_pressed():
+	global.state = global.PALETTE_EDITOR_NEW
+	var err = get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
+	
+	

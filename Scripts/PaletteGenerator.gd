@@ -8,6 +8,7 @@ var count: Dictionary = {"goto_num": 0, "yoyo_num":0, "kero_num":0, "time_num":0
 var character_palettes: Dictionary = {"goto": [], "yoyo":[], "kero":[], "time":[], "darkgoto":[], "slime":[], "sword":[], "scythe":[]}
 var characters = ["goto", "yoyo", "kero", "time", "darkgoto", "slime", "sword", "scythe"]
 
+
 func import_data(data: Array):
 	global.logger.set_prefix("PaletteGenerator")
 	global.logger.write("Calling import_data()")
@@ -90,7 +91,8 @@ func generate_palette_sections(config: ConfigFile) -> ConfigFile:
 					config.set_value(section, character, global.pal[global.char_int_to_str_proper(char_str_to_int(character))])
 					global.logger.write("^^^ Adding default character palette")
 	return config
-				
+
+
 func char_str_to_int(string: String) -> int:
 	global.logger.set_prefix("PaletteGenerator")
 	global.logger.write("Calling char_str_to_int()")
@@ -100,3 +102,4 @@ func char_str_to_int(string: String) -> int:
 			return index
 		index += 1
 	return -1		
+
