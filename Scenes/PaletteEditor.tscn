@@ -33,7 +33,7 @@ bg_color = Color( 0, 0, 0, 0.682353 )
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="Theme" id=8]
+[sub_resource type="Theme" id=7]
 PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -55,7 +55,7 @@ PopupMenu/styles/panel = ExtResource( 5 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -95,10 +95,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 1100.47
-margin_top = 80.3406
-margin_right = 1406.47
-margin_bottom = 515.341
+margin_left = 1104.47
+margin_top = 84.3406
+margin_right = 1410.47
+margin_bottom = 519.341
 theme = SubResource( 3 )
 edit_alpha = false
 __meta__ = {
@@ -119,7 +119,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RevertButton" type="Button" parent="."]
+[node name="InvertButton" type="Button" parent="."]
 margin_left = 851.0
 margin_top = 384.0
 margin_right = 996.0
@@ -128,15 +128,15 @@ rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
-text = "Revert"
+text = "Invert"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorList" type="ItemList" parent="."]
-margin_left = 534.0
+margin_left = 532.811
 margin_top = 82.0
-margin_right = 673.0
+margin_right = 671.811
 margin_bottom = 536.0
 custom_styles/bg = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
@@ -152,12 +152,12 @@ margin_left = 681.47
 margin_top = 434.0
 margin_right = -180.53
 margin_bottom = -115.0
-theme = SubResource( 8 )
+theme = SubResource( 7 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Shoto Goto"
 icon = ExtResource( 7 )
 align = 1
@@ -172,12 +172,12 @@ margin_left = 848.0
 margin_top = 434.0
 margin_right = 1016.0
 margin_bottom = 485.0
-theme = SubResource( 8 )
+theme = SubResource( 7 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Afternoon Dojo"
 align = 1
 items = [ "Afternoon Dojo", null, false, 0, null, "School Rooftop", null, false, 1, null, "Underground Lab", null, false, 2, null, "DonCorp", null, false, 3, null, "Sunset Bridge", null, false, 4, null, "Factory S1", null, false, 5, null, "Celestial lake", null, false, 6, null, "Singularity", null, false, 7, null ]
@@ -213,3 +213,10 @@ text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
+[connection signal="pressed" from="InvertButton" to="." method="_on_InvertButton_pressed"]
+[connection signal="item_selected" from="ColorList" to="." method="_on_ColorList_item_selected"]
+[connection signal="item_selected" from="StageSelect" to="." method="_on_StageSelect_item_selected"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]

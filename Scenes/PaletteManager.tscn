@@ -9,26 +9,26 @@
 [ext_resource path="res://Resources/red_hover_stylebox.tres" type="StyleBox" id=8]
 [ext_resource path="res://Scripts/PaletteManager.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 62
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.682353 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -49,7 +49,7 @@ margin_top = 32.0615
 margin_right = 1010.4
 margin_bottom = 106.062
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Palette Manager"
 align = 1
 __meta__ = {
@@ -62,7 +62,7 @@ margin_top = 183.367
 margin_right = 254.408
 margin_bottom = 257.367
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Name:"
 align = 1
 __meta__ = {
@@ -75,7 +75,7 @@ margin_top = 51.3114
 margin_right = 659.746
 margin_bottom = 125.312
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Current Palette"
 align = 1
 __meta__ = {
@@ -87,8 +87,8 @@ margin_left = 667.0
 margin_top = 79.0
 margin_right = 988.0
 margin_bottom = 554.0
-custom_styles/bg = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/bg = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 icon_scale = 3.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -102,7 +102,7 @@ margin_bottom = 116.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "New"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,7 +116,7 @@ margin_bottom = 168.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Edit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,7 +130,7 @@ margin_bottom = 220.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 8 )
 custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Delete"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,7 +142,7 @@ margin_top = 79.0
 margin_right = 297.0
 margin_bottom = 173.0
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = " Index: 0
  Name: \"Don McRon\"
  Colors: []"
@@ -157,7 +157,7 @@ margin_top = 179.0
 margin_right = 296.0
 margin_bottom = 220.0
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "Hello World"
 show_line_numbers = true
 __meta__ = {
@@ -172,7 +172,7 @@ margin_bottom = 578.096
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -186,7 +186,7 @@ margin_bottom = 578.096
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Export"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,7 +200,7 @@ margin_bottom = 578.096
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/hover = ExtResource( 8 )
 custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
