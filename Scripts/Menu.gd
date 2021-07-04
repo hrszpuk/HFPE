@@ -12,7 +12,8 @@ func _ready() -> void:
 	setup_buttons()
 	Background.reset_character()
 	Infographic.setup_infographic() # Settings infographic to data in global.gd
-
+	return
+	
 
 func setup_buttons() -> void:
 	PaletteMenuButton.set_text("Create Palettes")
@@ -20,7 +21,9 @@ func setup_buttons() -> void:
 	SettingsMenuButton.set_text("Settings")
 	NetworkMenuButton.set_text("Palette Network")
 	LibraryMenuButton.set_text("Library")
+	return
 
 
-func _on_PaletteMenuButton_pressed():
+func _on_PaletteMenuButton_pressed() -> void:
 	get_tree().change_scene("res://Scenes/PaletteManager.tscn")
+	return

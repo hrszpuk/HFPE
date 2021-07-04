@@ -20,10 +20,10 @@ func set_character(character: String) -> void:
 	return
 	
 
-func set_stage(stage: String) -> void:
-	$Stage.animation = stage
-	return
-	
+func set_stage(index: int) -> void:
+	$Stage.animation = global.int_to_character_code_name(index)
+	return 
+
 
 func reset_character_shader_param(index: int, color: Color) -> void:
 	$Character.material.set_shader_param("threshold", 0.001)

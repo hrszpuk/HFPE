@@ -34,36 +34,37 @@ onready var state = NONE
 onready var start_character = "sword"
 
 
-func _ready():
+func _ready() -> void:
 	directory()
 	config()
 	data_config()
+	return
 
 
-func hf_config():
+func hf_config() -> void:
 	# Load hyperfight config
-	pass
+	return
 	
 
-func hf_palette():
+func hf_palette() -> void:
 	# Load hyperfight palette
-	pass
+	return
 
 	
-func mods():
+func mods() -> void:
 	# Scan mod directory
 	# Scan sub directories
 	# Load palette and config files
-	pass 
+	return 
 
 	
-func library():
+func library() -> void:
 	# Scan directory
 	# Load all *.cfg files
-	pass
+	return
 
 
-func config():
+func config() -> void:
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/config.cfg"):
 		# Loading config
@@ -81,9 +82,10 @@ func config():
 		config.set_value("Author Settings", "author_icon", author_icon)
 		config.set_value("Library Settings", "default_filename", palette_filename)
 		var err = config.save("user://HFPE/config.cfg")
+	return
 
 
-func data_config():
+func data_config() -> void:
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/data/config.cfg"):
 		var config: ConfigFile = ConfigFile.new()
@@ -92,9 +94,10 @@ func data_config():
 		# Generate config
 		var config: ConfigFile = ConfigFile.new()
 		config.save("user://HFPE/data/config.cfg")
+	return
 
 
-func directory():
+func directory() -> void:
 	var dir: Directory = Directory.new()
 	dir.open("user://")
 	dir.make_dir("HFPE")
@@ -102,4 +105,18 @@ func directory():
 	dir.make_dir("HFPE/data")
 	dir.make_dir("HFPE/data/assets")
 	dir.make_dir("mods")
+	return
+	
+
+func int_to_character_code_name(integer: int) -> String:
+	match(integer):
+		0: return "goto"
+		1: return "yoyo"
+		2: return "kero"
+		3: return "sword"
+		4: return "darkgoto"
+		5: return "time"
+		6: return "slime"
+		7: return "scythe"
+		_: return "goto"
 	

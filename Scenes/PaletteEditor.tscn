@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/PaletteEditor.gd" type="Script" id=2]
@@ -9,6 +9,13 @@
 [ext_resource path="res://Assets/ui/select/char/portrait/goto.png" type="Texture" id=7]
 [ext_resource path="res://Resources/red_hover_stylebox.tres" type="StyleBox" id=8]
 [ext_resource path="res://Resources/red_stylebox.tres" type="StyleBox" id=9]
+[ext_resource path="res://Assets/ui/select/char/portrait/darkgoto.png" type="Texture" id=10]
+[ext_resource path="res://Assets/ui/select/char/portrait/sword.png" type="Texture" id=11]
+[ext_resource path="res://Assets/ui/select/char/portrait/yoyo.png" type="Texture" id=12]
+[ext_resource path="res://Assets/ui/select/char/portrait/kero.png" type="Texture" id=13]
+[ext_resource path="res://Assets/ui/select/char/portrait/time.png" type="Texture" id=14]
+[ext_resource path="res://Assets/ui/select/char/portrait/slime.png" type="Texture" id=15]
+[ext_resource path="res://Assets/ui/select/char/portrait/scythe.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 62
@@ -95,10 +102,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 1104.47
-margin_top = 84.3406
-margin_right = 1410.47
-margin_bottom = 519.341
+margin_left = 1112.47
+margin_top = 92.3406
+margin_right = 1418.47
+margin_bottom = 527.341
 theme = SubResource( 3 )
 edit_alpha = false
 __meta__ = {
@@ -161,7 +168,7 @@ custom_fonts/font = SubResource( 8 )
 text = "Shoto Goto"
 icon = ExtResource( 7 )
 align = 1
-items = [ "Shoto Goto", ExtResource( 7 ), false, 0, null ]
+items = [ "Shoto Goto", ExtResource( 7 ), false, 0, null, "Yo Yona", ExtResource( 12 ), false, 1, null, "Dr. Kero", ExtResource( 13 ), false, 2, null, "Vince Volt", ExtResource( 11 ), false, 3, null, "Dark Goto", ExtResource( 10 ), false, 4, null, "Don McRon", ExtResource( 14 ), false, 5, null, "Slime Bros", ExtResource( 15 ), false, 6, null, "Reaper Scythe", ExtResource( 16 ), false, 7, null ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -218,5 +225,7 @@ __meta__ = {
 [connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
 [connection signal="pressed" from="InvertButton" to="." method="_on_InvertButton_pressed"]
 [connection signal="item_selected" from="ColorList" to="." method="_on_ColorList_item_selected"]
+[connection signal="item_selected" from="CharacterSelect" to="." method="_on_CharacterSelect_item_selected"]
 [connection signal="item_selected" from="StageSelect" to="." method="_on_StageSelect_item_selected"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
