@@ -7,14 +7,13 @@ I would recommend reading a guide or watching a tutorial to both Git and GitHub.
 [Link to guide](https://guides.github.com/introduction/git-handbook/).
 
 **How do the version numbers work**:
-Example: v1.2.3 = Version MANJOR.MINOR.PATCH
+Example: v1.2.3 = Version MAJOR.MINOR.PATCH: 
 Patch is for small bug fixes. Minor is for collections of patches and features. 
 Major is for large collections of minor updates or a large codebase change.
 
 **The difference between contributing and modding**:
 Contributing is adding the main HFPE source code. Contributed code will likely be deployed in future versions of the project.
-Modding is adding to your own version of the HFPE source code. You can do what you like with this source code
-as long as it is withing the license agreement.
+Modding is contributing code to your own version of the HFPE source code. You are allowed to mod HFPE as much as you like as long as it is within the license agreement.
 
 ## How do I contribute?
 Firstly, create an issue regarding what you want changed: bug fix or feature request.
