@@ -143,10 +143,11 @@ margin_right = 297.0
 margin_bottom = 173.0
 custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = SubResource( 5 )
-text = " Index: 0
- Name: \"Don McRon\"
- Colors: []"
+text = " Index: null,
+ Name: \"null\"
+ Colors: [null]"
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

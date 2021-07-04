@@ -14,7 +14,7 @@ var default_palettes = {
 	scythe = [ "ff95a0", "e16d90", "c46565", "8c3849", "214a55", "11232a", "3b3535", "1e1e1e", "fbeaea", "e1a5b1", "a2ddb4", "ffccdb", "f2dac2", "d4a483", "ee234c", "591d23", "191516" ],
 }
 
-# config.cfg variables
+# HFPE/config.cfg variables
 onready var author_username = "Author Username"
 onready var author_icon = "author_icon.png"
 onready var author_description = "Author Description"
@@ -32,39 +32,116 @@ onready var state = NONE
 
 # Background 
 onready var start_character = "sword"
+onready var start_stage = "sword"
 
+# Hyperfight config.cfg & palette.cfg data
+onready var config_config: ConfigFile
+onready var palette_config: ConfigFile
+
+# Library config data
+onready var library_data: Dictionary
+
+# Mod config data
+onready var mod_data: Dictionary
 
 func _ready() -> void:
-	directory()
-	config()
-	data_config()
+	directory() # Create directories
+	config() # Create/load HFPE/config.cfg
+	data_config() # Create/load HFPE/data/config.cfg
+	config_config = hf_config() # Create/cache and load config.cfg
+	palette_config = hf_palette() # Create/cache and load palette.cfg
 	return
 
 
-func hf_config() -> void:
+func hf_config() -> ConfigFile:
+	# Cache hyperfight config
 	# Load hyperfight config
-	return
+	var file: File = File.new()
+	if file.file_exists("user://config.cfg"):
+		file.open("user://config.cfg", File.READ)
+		var content: String = file.get_as_text()
+		file.close()
+		file.open("user://HFPE/cache/config.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+	else:
+		file.open("res://Resources/config.cfg", File.READ)
+		var content: String = file.get_as_text()
+		file.close()
+		file.open("user://config.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+		file.open("user://HFPE/cache/config.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+	var config_file := ConfigFile.new()
+	var _err = config_file.load("user://HFPE/cache/config.cfg")
+	if _err != OK:
+		var __err = config_file.load("user://config.cfg")
+		if __err != OK:
+			config_file.load("res://Resource/config.cfg")
+	return config_file
 	
 
-func hf_palette() -> void:
+func hf_palette() -> ConfigFile:
+	# Cache hyperfight palette
 	# Load hyperfight palette
-	return
+	var file: File = File.new()
+	if file.file_exists("user://palette.cfg"):
+		var _err = file.open("user://palette.cfg", File.READ)
+		var content: String = file.get_as_text()
+		file.close()
+		var __err = file.open("user://HFPE/cache/palette.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+	else:
+		var _err = file.open("res://Resources/palette.cfg", File.READ)
+		var content: String = file.get_as_text()
+		file.close()
+		var __err = file.open("user://palette.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+		var ___err = file.open("user://HFPE/cache/palette.cfg", File.WRITE)
+		file.store_string(content)
+		file.close()
+	var palette_file := ConfigFile.new()
+	var _err = palette_file.load("user://HFPE/cache/palette.cfg")
+	if _err != OK:
+		var __err = palette_file.load("user://palette.cfg")
+		if __err != OK:
+			palette_file.load("res://Resource/palette.cfg")
+	return palette_file
 
 	
 func mods() -> void:
 	# Scan mod directory
-	# Scan sub directories
-	# Load palette and config files
-	return 
-
+	# Load mod data into dictionary
+	
+	# Mod directory layout:
+	# Hyperfight-mod-name
+	#   | - Assets
+	#      | - character.png
+	#      | - another_character.png
+	#   | - HFPE.cfg
+	#	| - palette.cfg
+	#	| - config.cfg
+	
+	for dir in get_directory_contents("user://mods/", true, false):
+		mod_data[dir] = {}
+		mod_data[dir]["HFPE"] = generate_dictionary_from_configfile_path("user://mods/%s/HFPE.cfg" % dir)
+		mod_data[dir]["assets"] = []
+	return
+	
 	
 func library() -> void:
 	# Scan directory
 	# Load all *.cfg files
+	library_data["files"] = get_directory_contents("user://HFPE/library/", false, true)
 	return
 
 
 func config() -> void:
+	# Load or generate HFPE/config.cfg
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/config.cfg"):
 		# Loading config
@@ -86,6 +163,7 @@ func config() -> void:
 
 
 func data_config() -> void:
+	# Load or generate HFPE/data/config.cfg
 	var file: File = File.new()
 	if file.file_exists("user://HFPE/data/config.cfg"):
 		var config: ConfigFile = ConfigFile.new()
@@ -98,6 +176,7 @@ func data_config() -> void:
 
 
 func directory() -> void:
+	# Creates custom directories (folders) for HFPE
 	var dir: Directory = Directory.new()
 	dir.open("user://")
 	dir.make_dir("HFPE")
@@ -105,6 +184,7 @@ func directory() -> void:
 	dir.make_dir("HFPE/data")
 	dir.make_dir("HFPE/data/assets")
 	dir.make_dir("mods")
+	dir.make_dir("HFPE/cache")
 	return
 	
 
@@ -119,4 +199,38 @@ func int_to_character_code_name(integer: int) -> String:
 		6: return "slime"
 		7: return "scythe"
 		_: return "goto"
+		
+	
+func get_directory_contents(path: String, include_directories: bool = false, include_files: bool = true) -> Array:
+	var files: Array = []
+	var root: Directory = Directory.new()
+	root.open(path)
+	var _err = root.list_dir_begin(true, false)
+	if _err != OK:
+		return [null]
+	var file = root.get_next()
+	while(file != ""):
+		if not root.current_is_dir() and include_files:
+			files.append(file)
+		elif include_directories:
+			files.append(file)
+		file = root.get_next()
+	return files
+	
+	
+func generate_dictionary_from_configfile_path(path: String) -> Dictionary:
+	var config: ConfigFile = ConfigFile.new()
+	var _err = config.load(path)
+	if _err != OK:
+		return {"_err": _err}
+	return generate_dictionary_from_configfile(config)
+	
+
+func generate_dictionary_from_configfile(config: ConfigFile) -> Dictionary:
+	var dict: Dictionary = {}
+	# Read config
+	# Read sections 
+	# Read keys
+	# return
+	return dict
 	

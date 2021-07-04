@@ -8,8 +8,7 @@ onready var Infographic = $CurrentPaletteInfo
 
 func _ready() -> void:
 	NameInput.text = global.palette_filename
-	$Background.reset_character()
-	$Background.set_stage(3) # Stage: sword (Vince's stage)
+	$Background.set_stage("sword") # Stage: sword (Vince's stage)
 	var i: int = 0
 	for palette in global.palette_data:
 		var img := Image.new()
@@ -22,7 +21,10 @@ func _ready() -> void:
 
 
 func update_infographic() -> void:
-	Infographic.text = "Index: %d" % global.current_index
+	var string: String = "Index: %d,\n" % global.current_index
+	string += "Character: %s,\n" % global.palette_data[global.current_index]["character"]
+	string += "Color: %s" % str(global.palette_data[global.current_index]["palette"])
+	Infographic.text = string
 	return
 
 
@@ -31,17 +33,28 @@ func _on_DeleteButton_pressed() -> void:
 		CharacterList.remove_item(global.current_index)
 		global.palette_data.remove(global.current_index)
 		global.current_index = null
+		$Background.reset_character()
+		$Background.clear_character_shader(global.start_character)
 	return
 	
 
 func _on_ItemList_item_selected(index) -> void:
 	global.current_index = index
+	var character = global.palette_data[global.current_index]["character"]
+	$Background.set_character(character)
+	var i: int = 0
+	for item in global.palette_data[global.current_index]["palette"]:
+		$Background.reset_character_shader_param(i, Color(str(global.default_palettes[character][i])))
+		$Background.set_character_shader_param(i, Color(str(item)))
+		i += 1
 	update_infographic()
 	return
 	
 
 func _on_ItemList_nothing_selected() -> void:
 	global.current_index = null
+	$Background.reset_character()
+	$Background.clear_character_shader(global.start_character)
 	return
 	
 
@@ -65,3 +78,6 @@ func _on_NewButton_pressed() -> void:
 
 func _on_CancelButton_pressed() -> void:
 	var _err = get_tree().change_scene("res://Scenes/Menu.tscn")
+	return
+	
+	

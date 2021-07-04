@@ -6,11 +6,12 @@ onready var CharacterSelect = $CharacterSelect
 onready var ColorList = $ColorList
 onready var Attack = $Attack
 onready var Super = $Super
+onready var NameInput = $NameInput
 
 var current_color_index = null
 
 func _ready() -> void:
-	$Background.set_stage(0)
+	$Background.set_stage("goto")
 	var i: int = 0
 	if global.state == global.PALETTE_EDITOR_NEW:
 		$Background.set_character("goto")
@@ -54,7 +55,7 @@ func _on_ColorPicker_color_changed(color) -> void:
 	
 
 func _on_StageSelect_item_selected(index) -> void:
-	$Background.set_stage(index)
+	$Background.set_stage(global.int_to_character_code_name(index))
 	return
 
 
@@ -93,7 +94,7 @@ func _on_SaveButton_pressed() -> void:
 			"character": global.int_to_character_code_name(CharacterSelect.selected),
 			"character_int": CharacterSelect.selected,
 			"palette": palette,
-			"name": "Default"
+			"name": NameInput.text
 		}
 		global.palette_data.append(new_palette)
 	elif global.state == global.PALETTE_EDITOR_EDIT:
