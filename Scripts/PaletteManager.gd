@@ -62,3 +62,6 @@ func _on_NewButton_pressed() -> void:
 	var err = get_tree().change_scene("res://Scenes/PaletteEditor.tscn")
 	return
 	
+
+func _on_CancelButton_pressed() -> void:
+	var _err = get_tree().change_scene("res://Scenes/Menu.tscn")

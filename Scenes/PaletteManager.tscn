@@ -212,3 +212,4 @@ __meta__ = {
 [connection signal="pressed" from="EditButton" to="." method="_on_EditButton_pressed"]
 [connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="text_changed" from="NameInput" to="." method="_on_NameInput_text_changed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]

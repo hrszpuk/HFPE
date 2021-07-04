@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/PaletteEditor.gd" type="Script" id=2]
@@ -16,6 +16,182 @@
 [ext_resource path="res://Assets/ui/select/char/portrait/time.png" type="Texture" id=14]
 [ext_resource path="res://Assets/ui/select/char/portrait/slime.png" type="Texture" id=15]
 [ext_resource path="res://Assets/ui/select/char/portrait/scythe.png" type="Texture" id=16]
+[ext_resource path="res://Assets/proj/goto/attack.png" type="Texture" id=17]
+[ext_resource path="res://Assets/proj/darkgoto/attack.png" type="Texture" id=18]
+[ext_resource path="res://Assets/proj/slime/blue/attack_down.png" type="Texture" id=19]
+[ext_resource path="res://Assets/effect/sword/hit.png" type="Texture" id=20]
+[ext_resource path="res://Assets/proj/scythe/special.png" type="Texture" id=21]
+[ext_resource path="res://Assets/proj/kero/attack_down.png" type="Texture" id=22]
+[ext_resource path="res://Assets/proj/time/attack_short.png" type="Texture" id=23]
+[ext_resource path="res://Assets/proj/yoyo/attack.png" type="Texture" id=24]
+[ext_resource path="res://Resources/palette.tres" type="Material" id=25]
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 17 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 17 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 24 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 24 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 24 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 24 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 24 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 22 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 19 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 21 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 21 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 21 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 20 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 20 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=42]
+animations = [ {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "time",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "goto",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "yoyo",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "kero",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "darkgoto",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "slime",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "scythe",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "sword",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 62
@@ -66,6 +242,18 @@ PopupMenu/styles/separator = null
 size = 32
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 32
+font_data = ExtResource( 3 )
+
 [node name="PaletteEditor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,6 +265,17 @@ __meta__ = {
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0.674377, 0.0879822 )
+
+[node name="Attack" type="AnimatedSprite" parent="."]
+material = ExtResource( 25 )
+position = Vector2( 359.5, 478 )
+scale = Vector2( 6, 6 )
+frames = SubResource( 42 )
+animation = "slime"
+frame = 1
+playing = true
+
+[node name="Super" type="AnimatedSprite" parent="."]
 
 [node name="TitleLabel" type="Label" parent="."]
 margin_left = 382.399
@@ -102,10 +301,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 1112.47
-margin_top = 92.3406
-margin_right = 1418.47
-margin_bottom = 527.341
+margin_left = 1116.47
+margin_top = 96.3406
+margin_right = 1422.47
+margin_bottom = 531.341
 theme = SubResource( 3 )
 edit_alpha = false
 __meta__ = {
@@ -142,9 +341,9 @@ __meta__ = {
 
 [node name="ColorList" type="ItemList" parent="."]
 margin_left = 532.811
-margin_top = 82.0
+margin_top = 81.0
 margin_right = 671.811
-margin_bottom = 536.0
+margin_bottom = 535.0
 custom_styles/bg = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 icon_scale = 3.0
@@ -221,6 +420,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 78.0
+margin_right = 111.0
+margin_bottom = 116.0
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 9 )
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameInput" type="LineEdit" parent="."]
+margin_left = 111.0
+margin_top = 78.0
+margin_right = 255.0
+margin_bottom = 116.0
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 10 )
+text = "Unnamed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flipped" type="CheckBox" parent="."]
+margin_left = 299.75
+margin_top = 77.75
+margin_right = 481.75
+margin_bottom = 115.75
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/hover_pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 43 )
+toggle_mode = false
+text = "Flipped"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="color_changed" from="ColorPicker" to="." method="_on_ColorPicker_color_changed"]
 [connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
 [connection signal="pressed" from="InvertButton" to="." method="_on_InvertButton_pressed"]
@@ -229,3 +469,4 @@ __meta__ = {
 [connection signal="item_selected" from="StageSelect" to="." method="_on_StageSelect_item_selected"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="Flipped" to="." method="_on_Flipped_pressed"]

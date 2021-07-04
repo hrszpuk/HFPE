@@ -4,6 +4,8 @@ onready var ColorPickerBackground = $ColorPickerBackground
 onready var ColorPicker = $ColorPicker
 onready var CharacterSelect = $CharacterSelect
 onready var ColorList = $ColorList
+onready var Attack = $Attack
+onready var Super = $Super
 
 var current_color_index = null
 
@@ -23,6 +25,7 @@ func _ready() -> void:
 			ColorList.add_item(str(item), null, true)
 			$Background.reset_character_shader_param(i, Color(global.default_palettes[global.palette_data[global.current_index]["character"]][i]))
 			$Background.set_character_shader_param(i, Color(str(item)))
+
 			i += 1
 	setup_color_picker()
 	return
@@ -100,12 +103,19 @@ func _on_SaveButton_pressed() -> void:
 	return
 	
 
-func _on_CharacterSelect_item_selected(index):
-	$Background.set_character(global.int_to_character_code_name(index))
+func _on_CharacterSelect_item_selected(index) -> void:
+	var character: String = global.int_to_character_code_name(index)
+	$Background.set_character(character)
 	ColorList.clear()
 	var i: int = 0
-	for item in global.default_palettes[global.int_to_character_code_name(index)]:
+	for item in global.default_palettes[character]:
 		ColorList.add_item(item, null, true)
 		$Background.reset_character_shader_param(i, Color(item))
 		$Background.set_character_shader_param(i, Color(item))
 		i += 1
+	return
+
+
+func _on_Flipped_pressed() -> void:
+	$Background/Character.scale.x *= -1
+	return
