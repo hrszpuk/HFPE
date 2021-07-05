@@ -8,6 +8,7 @@ onready var Attack = $Attack
 onready var Super = $Super
 onready var NameInput = $NameInput
 
+var palette_name: String = "Unnamed"
 var current_color_index = null
 
 func _ready() -> void:
@@ -94,7 +95,7 @@ func _on_SaveButton_pressed() -> void:
 			"character": global.int_to_character_code_name(CharacterSelect.selected),
 			"character_int": CharacterSelect.selected,
 			"palette": palette,
-			"name": NameInput.text
+			"name": palette_name
 		}
 		global.palette_data.append(new_palette)
 	elif global.state == global.PALETTE_EDITOR_EDIT:
@@ -119,4 +120,9 @@ func _on_CharacterSelect_item_selected(index) -> void:
 
 func _on_Flipped_pressed() -> void:
 	$Background/Character.scale.x *= -1
+	return
+
+
+func _on_NameInput_text_changed(new_text) -> void:
+	palette_name = new_text
 	return

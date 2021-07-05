@@ -3,6 +3,7 @@ extends Node
 # Palette data
 var palette_data = []
 var current_index = null
+var section_count: int = 0
 var default_palettes = {
 	goto = [ "000000", "65b7d5", "2d4f7b", "912323", "551515", "191533", "05040d", "2f2116", "150e07", "b7b7b7", "848484", "bb9d87", "775338", "000001", "66b7d5", "2e4f7b", "d5ac65", "bb714f", "ffffff" ],
 	yoyo = [ "cc6c40", "ae4b31", "94ead3", "58c2c8", "7baad5", "697abb", "ea94d3", "e079e6", "e0fff7", "eaca94", "d5a17b", "330f0f", "d5784e", "a65a46", "7caad5", "6a7abb" ],
@@ -43,6 +44,9 @@ onready var library_data: Dictionary
 
 # Mod config data
 onready var mod_data: Dictionary
+
+# Palette Generator
+var generate_defaults = true
 
 func _ready() -> void:
 	directory() # Create directories
@@ -233,4 +237,30 @@ func generate_dictionary_from_configfile(config: ConfigFile) -> Dictionary:
 	# Read keys
 	# return
 	return dict
+	
+
+func set_palette_sections() -> void:
+	var count = {
+		"goto": 0,
+		"yoyo": 0,
+		"kero": 0,
+		"sword": 0,
+		"darkgoto": 0,
+		"time": 0,
+		"slime": 0,
+		"scythe": 0
+	}
+	
+	for item in global.palette_data:
+		for character in count.keys():
+			if item["character"] == character:
+				count[character] += 1
+				item["section"] = count[character]
+				
+	var temp: int = 0
+	for character in count.keys():
+		if count[character] > temp:
+			temp = count[character]
+	section_count = temp
+	return
 	

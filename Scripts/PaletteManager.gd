@@ -12,16 +12,18 @@ func _ready() -> void:
 	var i: int = 0
 	for palette in global.palette_data:
 		var img := Image.new()
-		img.load("res://Assets/ui/select/char/portrait/%s.png" % palette["character"])
+		img.load("res://Assets/ui/select/char/preview/%s.png" % palette["character"])
+		
 		var icon := ImageTexture.new()
 		icon.create_from_image(img)
 		CharacterList.add_item(global.palette_data[i]["name"], icon, true)
 		i += 1
+	global.set_palette_sections()
 	return
 
 
 func update_infographic() -> void:
-	var string: String = "Index: %d,\n" % global.current_index
+	var string: String = "Index: %d, Section: %d\n" % [global.current_index, global.palette_data[global.current_index]["section"]]
 	string += "Character: %s,\n" % global.palette_data[global.current_index]["character"]
 	string += "Color: %s" % str(global.palette_data[global.current_index]["palette"])
 	Infographic.text = string
@@ -79,5 +81,19 @@ func _on_NewButton_pressed() -> void:
 func _on_CancelButton_pressed() -> void:
 	var _err = get_tree().change_scene("res://Scenes/Menu.tscn")
 	return
-	
-	
+
+
+func _on_OrganiseButton_pressed() -> void:
+	var _err = get_tree().change_scene("res://Scenes/PaletteOrganiser.tscn")
+	return
+
+
+func _on_SaveButton_pressed() -> void:
+	var generator := PaletteGenerator.new()
+	generator.import_data(global.palette_data)
+	var config := ConfigFile.new()
+	config = generator.generate_option_section(config)
+	config = generator.generate_palette_sections(config)
+	config.save("user://HFPE/library/%s.cfg" % global.palette_filename)
+	get_tree().change_scene("res://Scenes/Menu.tscn")
+	return
