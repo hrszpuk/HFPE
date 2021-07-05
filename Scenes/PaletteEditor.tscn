@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/PaletteEditor.gd" type="Script" id=2]
@@ -9,31 +9,214 @@
 [ext_resource path="res://Assets/ui/select/char/portrait/goto.png" type="Texture" id=7]
 [ext_resource path="res://Resources/red_hover_stylebox.tres" type="StyleBox" id=8]
 [ext_resource path="res://Resources/red_stylebox.tres" type="StyleBox" id=9]
+[ext_resource path="res://Assets/ui/select/char/portrait/darkgoto.png" type="Texture" id=10]
+[ext_resource path="res://Assets/ui/select/char/portrait/sword.png" type="Texture" id=11]
+[ext_resource path="res://Assets/ui/select/char/portrait/yoyo.png" type="Texture" id=12]
+[ext_resource path="res://Assets/ui/select/char/portrait/kero.png" type="Texture" id=13]
+[ext_resource path="res://Assets/ui/select/char/portrait/time.png" type="Texture" id=14]
+[ext_resource path="res://Assets/ui/select/char/portrait/slime.png" type="Texture" id=15]
+[ext_resource path="res://Assets/ui/select/char/portrait/scythe.png" type="Texture" id=16]
+[ext_resource path="res://Assets/proj/goto/attack.png" type="Texture" id=17]
+[ext_resource path="res://Assets/proj/darkgoto/attack.png" type="Texture" id=18]
+[ext_resource path="res://Assets/proj/slime/blue/attack_down.png" type="Texture" id=19]
+[ext_resource path="res://Assets/effect/sword/hit.png" type="Texture" id=20]
+[ext_resource path="res://Assets/proj/scythe/special.png" type="Texture" id=21]
+[ext_resource path="res://Assets/proj/kero/attack_down.png" type="Texture" id=22]
+[ext_resource path="res://Assets/proj/time/attack_short.png" type="Texture" id=23]
+[ext_resource path="res://Assets/proj/yoyo/attack.png" type="Texture" id=24]
+[ext_resource path="res://Resources/palette.tres" type="Material" id=25]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 17 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 17 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 17 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 19 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 21 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 21 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 21 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 20 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 20 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 24 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 24 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 24 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 24 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 24 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 22 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "time",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "darkgoto",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "goto",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "slime",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "scythe",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "sword",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "yoyo",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "kero",
+"speed": 4.0
+} ]
+
+[sub_resource type="DynamicFont" id=33]
 size = 62
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=34]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
+[sub_resource type="Theme" id=35]
+default_font = SubResource( 34 )
 Button/styles/ = ExtResource( 5 )
 LineEdit/styles/ = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=36]
 size = 32
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=37]
 bg_color = Color( 0, 0, 0, 0.682353 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=38]
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=39]
 PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -55,9 +238,21 @@ PopupMenu/styles/panel = ExtResource( 5 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=40]
 size = 32
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=41]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 32
+font_data = ExtResource( 3 )
 
 [node name="PaletteEditor" type="Control"]
 anchor_right = 1.0
@@ -71,13 +266,23 @@ __meta__ = {
 [node name="Background" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0.674377, 0.0879822 )
 
+[node name="Attack" type="AnimatedSprite" parent="."]
+material = ExtResource( 25 )
+position = Vector2( 359.5, 478 )
+scale = Vector2( 6, 6 )
+frames = SubResource( 32 )
+animation = "slime"
+playing = true
+
+[node name="Super" type="AnimatedSprite" parent="."]
+
 [node name="TitleLabel" type="Label" parent="."]
 margin_left = 382.399
 margin_top = 32.0615
 margin_right = 1010.4
 margin_bottom = 106.062
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 33 )
 text = "Palette Editor"
 align = 1
 __meta__ = {
@@ -95,11 +300,11 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
-margin_left = 1104.47
-margin_top = 84.3406
-margin_right = 1410.47
-margin_bottom = 519.341
-theme = SubResource( 3 )
+margin_left = 1120.47
+margin_top = 100.341
+margin_right = 1426.47
+margin_bottom = 535.341
+theme = SubResource( 35 )
 edit_alpha = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,7 +318,7 @@ margin_bottom = 422.0
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 36 )
 text = "Random"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -127,7 +332,7 @@ margin_bottom = 422.0
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 36 )
 text = "Invert"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -135,11 +340,11 @@ __meta__ = {
 
 [node name="ColorList" type="ItemList" parent="."]
 margin_left = 532.811
-margin_top = 82.0
+margin_top = 81.0
 margin_right = 671.811
-margin_bottom = 536.0
-custom_styles/bg = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 535.0
+custom_styles/bg = SubResource( 37 )
+custom_fonts/font = SubResource( 38 )
 icon_scale = 3.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -152,16 +357,16 @@ margin_left = 681.47
 margin_top = 434.0
 margin_right = -180.53
 margin_bottom = -115.0
-theme = SubResource( 7 )
+theme = SubResource( 39 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 40 )
 text = "Shoto Goto"
 icon = ExtResource( 7 )
 align = 1
-items = [ "Shoto Goto", ExtResource( 7 ), false, 0, null ]
+items = [ "Shoto Goto", ExtResource( 7 ), false, 0, null, "Yo Yona", ExtResource( 12 ), false, 1, null, "Dr. Kero", ExtResource( 13 ), false, 2, null, "Vince Volt", ExtResource( 11 ), false, 3, null, "Dark Goto", ExtResource( 10 ), false, 4, null, "Don McRon", ExtResource( 14 ), false, 5, null, "Slime Bros", ExtResource( 15 ), false, 6, null, "Reaper Scythe", ExtResource( 16 ), false, 7, null ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -172,12 +377,12 @@ margin_left = 848.0
 margin_top = 434.0
 margin_right = 1016.0
 margin_bottom = 485.0
-theme = SubResource( 7 )
+theme = SubResource( 39 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 40 )
 text = "Afternoon Dojo"
 align = 1
 items = [ "Afternoon Dojo", null, false, 0, null, "School Rooftop", null, false, 1, null, "Underground Lab", null, false, 2, null, "DonCorp", null, false, 3, null, "Sunset Bridge", null, false, 4, null, "Factory S1", null, false, 5, null, "Celestial lake", null, false, 6, null, "Singularity", null, false, 7, null ]
@@ -194,7 +399,7 @@ margin_bottom = 532.0
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 36 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -208,8 +413,49 @@ margin_bottom = 531.0
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 8 )
 custom_styles/normal = ExtResource( 9 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 36 )
 text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 78.0
+margin_right = 111.0
+margin_bottom = 116.0
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 41 )
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameInput" type="LineEdit" parent="."]
+margin_left = 111.0
+margin_top = 78.0
+margin_right = 255.0
+margin_bottom = 116.0
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 42 )
+text = "Unnamed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flipped" type="CheckBox" parent="."]
+margin_left = 299.75
+margin_top = 77.75
+margin_right = 481.75
+margin_bottom = 115.75
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/hover_pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 43 )
+toggle_mode = false
+text = "Flipped"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -218,5 +464,9 @@ __meta__ = {
 [connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
 [connection signal="pressed" from="InvertButton" to="." method="_on_InvertButton_pressed"]
 [connection signal="item_selected" from="ColorList" to="." method="_on_ColorList_item_selected"]
+[connection signal="item_selected" from="CharacterSelect" to="." method="_on_CharacterSelect_item_selected"]
 [connection signal="item_selected" from="StageSelect" to="." method="_on_StageSelect_item_selected"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="text_changed" from="NameInput" to="." method="_on_NameInput_text_changed"]
+[connection signal="pressed" from="Flipped" to="." method="_on_Flipped_pressed"]

@@ -89,7 +89,7 @@ margin_right = 988.0
 margin_bottom = 554.0
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
-icon_scale = 3.0
+icon_scale = 1.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,10 +143,11 @@ margin_right = 297.0
 margin_bottom = 173.0
 custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = SubResource( 5 )
-text = " Index: 0
- Name: \"Don McRon\"
- Colors: []"
+text = " Index: null,
+ Name: \"null\"
+ Colors: [null]"
 valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -179,9 +180,9 @@ __meta__ = {
 }
 
 [node name="ExportButton" type="Button" parent="."]
-margin_left = 124.761
+margin_left = 125.761
 margin_top = 540.096
-margin_right = 204.761
+margin_right = 205.761
 margin_bottom = 578.096
 rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/hover = ExtResource( 7 )
@@ -206,9 +207,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OrganiseButton" type="Button" parent="."]
+margin_left = 239.0
+margin_top = 540.0
+margin_right = 342.0
+margin_bottom = 578.0
+rect_scale = Vector2( 1.2, 1.2 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
+text = "Organise"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="nothing_selected" from="ItemList" to="." method="_on_ItemList_nothing_selected"]
 [connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
 [connection signal="pressed" from="EditButton" to="." method="_on_EditButton_pressed"]
 [connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="text_changed" from="NameInput" to="." method="_on_NameInput_text_changed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="OrganiseButton" to="." method="_on_OrganiseButton_pressed"]

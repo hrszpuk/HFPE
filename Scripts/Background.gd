@@ -3,6 +3,9 @@ extends Node2D
 export (bool) var ScreenShow = false
 
 func _ready() -> void:
+	reset_character()
+	clear_character_shader(global.start_character)
+	set_stage(global.start_stage)
 	if ScreenShow:
 		$Screen.show()
 	else:
@@ -20,10 +23,10 @@ func set_character(character: String) -> void:
 	return
 	
 
-func set_stage(stage: String) -> void:
-	$Stage.animation = stage
-	return
-	
+func set_stage(character: String ) -> void:
+	$Stage.animation = character
+	return 
+
 
 func reset_character_shader_param(index: int, color: Color) -> void:
 	$Character.material.set_shader_param("threshold", 0.001)
@@ -36,9 +39,13 @@ func set_character_shader_param(index: int, color: Color) -> void:
 	return
 	
 
-func clear_character_shader() -> void:
-	$Character.material.set_shader_param("threshold", 1)
-	for i in range(0, 19):
-		$Character.material.set_shader_param("color_o%d" % i, Color.black)
+func clear_character_shader(character: String) -> void:
+	$Character.animation = character
+	$Character.material.set_shader_param("threshold", 0.001)
+	var i: int = 0
+	for item in global.default_palettes[character]:
+		$Character.material.set_shader_param("color_o%d" % i, item)
+		$Character.material.set_shader_param("color_n%d" % i, item)
+		i += 1
 	return
 		
