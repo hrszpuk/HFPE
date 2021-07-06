@@ -207,6 +207,7 @@ __meta__ = {
 }
 
 [node name="OrganiseButton" type="Button" parent="."]
+visible = false
 margin_left = 239.0
 margin_top = 540.0
 margin_right = 342.0
