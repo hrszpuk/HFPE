@@ -95,7 +95,8 @@ func _on_SaveButton_pressed() -> void:
 			"character": global.int_to_character_code_name(CharacterSelect.selected),
 			"character_int": CharacterSelect.selected,
 			"palette": palette,
-			"name": palette_name
+			"name": palette_name,
+			"section": 0
 		}
 		global.palette_data.append(new_palette)
 	elif global.state == global.PALETTE_EDITOR_EDIT:

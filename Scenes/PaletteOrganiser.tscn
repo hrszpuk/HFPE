@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Resources/raw/Pixel Intv.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Resources/red_stylebox.tres" type="StyleBox" id=7]
 [ext_resource path="res://Scripts/PaletteOrganiser.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/PaletteInfographic.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/PaletteOrganiserDialog.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 62
@@ -38,6 +39,26 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 28
 font_data = ExtResource( 5 )
 
 [node name="PaletteOrganiser" type="Control"]
@@ -118,9 +139,9 @@ __meta__ = {
 
 [node name="MoveButton" type="Button" parent="."]
 margin_left = 425.689
-margin_top = 134.684
+margin_top = 78.684
 margin_right = 505.689
-margin_bottom = 172.684
+margin_bottom = 116.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
@@ -132,9 +153,9 @@ __meta__ = {
 
 [node name="SwapButton" type="Button" parent="."]
 margin_left = 425.689
-margin_top = 190.684
+margin_top = 134.684
 margin_right = 505.689
-margin_bottom = 228.684
+margin_bottom = 172.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
@@ -146,28 +167,14 @@ __meta__ = {
 
 [node name="DeleteButton" type="Button" parent="."]
 margin_left = 425.689
-margin_top = 248.684
+margin_top = 192.684
 margin_right = 505.689
-margin_bottom = 286.684
+margin_bottom = 230.684
 rect_scale = Vector2( 1.1, 1.1 )
 custom_styles/hover = ExtResource( 6 )
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = SubResource( 8 )
 text = "Delete"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SelectButton" type="Button" parent="."]
-margin_left = 425.689
-margin_top = 78.6841
-margin_right = 505.689
-margin_bottom = 116.684
-rect_scale = Vector2( 1.1, 1.1 )
-custom_styles/hover = ExtResource( 4 )
-custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = SubResource( 8 )
-text = "Select"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,7 +185,100 @@ margin_top = 79.0
 margin_right = 385.0
 margin_bottom = 191.0
 
+[node name="PaletteDialog" type="PopupDialog" parent="."]
+visible = true
+margin_left = 366.0
+margin_top = 168.0
+margin_right = 622.0
+margin_bottom = 385.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Section" type="OptionButton" parent="PaletteDialog"]
+margin_left = 57.0
+margin_top = 122.0
+margin_right = 193.0
+margin_bottom = 158.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 9 )
+clip_text = true
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PaletteDialog"]
+margin_left = 77.0
+margin_top = 3.0
+margin_right = 177.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 10 )
+text = "Move"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Information" type="Label" parent="PaletteDialog"]
+margin_left = 11.0
+margin_top = 29.0
+margin_right = 246.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 11 )
+text = "Move section 700 scythe to section 100fkdufddddd"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OkayButton" type="Button" parent="PaletteDialog"]
+margin_left = 32.0
+margin_top = 173.0
+margin_right = 106.0
+margin_bottom = 206.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 12 )
+text = "Okay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="PaletteDialog"]
+margin_left = 144.0
+margin_top = 173.0
+margin_right = 218.0
+margin_bottom = 206.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 13 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="item_selected" from="SectionList" to="." method="_on_SectionList_item_selected"]
+[connection signal="nothing_selected" from="SectionList" to="." method="_on_SectionList_nothing_selected"]
 [connection signal="item_selected" from="PaletteList" to="." method="_on_PaletteList_item_selected"]
+[connection signal="nothing_selected" from="PaletteList" to="." method="_on_PaletteList_nothing_selected"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="SelectButton" to="." method="_on_SelectButton_pressed"]
+[connection signal="pressed" from="MoveButton" to="." method="_on_MoveButton_pressed"]
+[connection signal="pressed" from="SwapButton" to="." method="_on_SwapButton_pressed"]
+[connection signal="item_selected" from="PaletteDialog/Section" to="." method="_on_PaletteDialog_Section_item_selected"]
+[connection signal="pressed" from="PaletteDialog/OkayButton" to="." method="_on_PaletteDialog_OkayButton_pressed"]
+[connection signal="pressed" from="PaletteDialog/CancelButton" to="." method="_on_PaletteDialog_CancelButton_pressed"]

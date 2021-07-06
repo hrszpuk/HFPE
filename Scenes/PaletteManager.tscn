@@ -89,7 +89,6 @@ margin_right = 988.0
 margin_bottom = 554.0
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
-icon_scale = 1.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
