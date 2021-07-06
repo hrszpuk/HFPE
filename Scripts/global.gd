@@ -48,6 +48,11 @@ onready var mod_data: Dictionary
 # Palette Generator
 var generate_defaults = true
 
+# Palette Organiser Dialog cache
+var section_cache: String
+var character_cache: String
+var name_cache: String
+
 func _ready() -> void:
 	directory() # Create directories
 	config() # Create/load HFPE/config.cfg
@@ -251,11 +256,38 @@ func set_palette_sections() -> void:
 		"scythe": 0
 	}
 	
+	var reserved = {
+		"goto": [],
+		"yoyo": [],
+		"kero": [],
+		"sword": [],
+		"darkgoto": [],
+		"time": [],
+		"slime": [],
+		"scythe": []
+	}
+	
+	for item in global.palette_data:
+		for character in reserved:
+			if item["character"] == character and item["section"] != 0:
+				reserved[character].append(item["section"]) # Reserve number
+	
 	for item in global.palette_data:
 		for character in count.keys():
 			if item["character"] == character:
+				# I'm so fucking tried. I've had too much fucking coffee.
+				# I don't know how it works, I don't want to know how it works.
+				# Just don't fucking touch it, okay?
 				count[character] += 1
-				item["section"] = count[character]
+				if item["section"] == 0:
+					while count[character] in reserved[character]:
+						for i in range(count[character]):
+							if not (i in reserved[character]) and i != 0:
+								item["section"] = i
+								break
+						count[character] += 1
+					if item["section"] == 0:
+						item["section"] = count[character]
 				
 	var temp: int = 0
 	for character in count.keys():

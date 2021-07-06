@@ -89,7 +89,6 @@ margin_right = 988.0
 margin_bottom = 554.0
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
-icon_scale = 1.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -208,6 +207,7 @@ __meta__ = {
 }
 
 [node name="OrganiseButton" type="Button" parent="."]
+visible = false
 margin_left = 239.0
 margin_top = 540.0
 margin_right = 342.0

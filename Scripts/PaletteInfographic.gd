@@ -10,7 +10,7 @@ func _ready() -> void:
 	return
 	
 	
-func set_character(character: String) -> void:
+func set_icon(character: String) -> void:
 	var image := Image.new()
 	image.load("res://Assets/ui/select/char/preview/%s.png" % character)
 	var texture := ImageTexture.new()
@@ -20,7 +20,7 @@ func set_character(character: String) -> void:
 	
 
 func set_name(name: String) -> void:
-	PaletteLabel.text = "Character: %s" % name
+	CharacterLabel.text = "Name: %s" % name
 	return
 	
 
