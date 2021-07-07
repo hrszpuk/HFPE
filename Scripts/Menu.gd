@@ -25,10 +25,10 @@ func setup_buttons() -> void:
 
 
 func _on_PaletteMenuButton_pressed() -> void:
-	get_tree().change_scene("res://Scenes/PaletteManager.tscn")
+	var _err = get_tree().change_scene("res://Scenes/PaletteManager.tscn")
 	return
 
 
 func _on_ConfigMenuButton_pressed() -> void:
-	get_tree().change_scene("res://Scenes/ConfigEditor.tscn")
+	var _err = get_tree().change_scene("res://Scenes/ConfigEditor.tscn")
 	return

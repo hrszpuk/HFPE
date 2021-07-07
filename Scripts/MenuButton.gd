@@ -12,7 +12,8 @@ func set_text(text: String) -> void:
 	return
 
 
-func set_color(color: Color) -> void:
-	material.set("shader_param/color_o0", COLOR)
-	material.set("shader_param/color_n0", Color.red)
-	return
+# Old function
+#func set_color(color: Color) -> void:
+#	material.set("shader_param/color_o0", COLOR)
+#	material.set("shader_param/color_n0", Color.red)
+#	return
