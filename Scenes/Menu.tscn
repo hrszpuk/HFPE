@@ -96,3 +96,4 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="PaletteMenuButton" to="." method="_on_PaletteMenuButton_pressed"]
+[connection signal="pressed" from="ConfigMenuButton" to="." method="_on_ConfigMenuButton_pressed"]

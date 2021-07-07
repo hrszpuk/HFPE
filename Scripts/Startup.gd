@@ -6,5 +6,5 @@ func _ready() -> void:
 	
 
 func _on_Timer_timeout() -> void:
-	get_tree().change_scene("res://Scenes/Menu.tscn")
+	var _err = get_tree().change_scene("res://Scenes/Menu.tscn")
 	return

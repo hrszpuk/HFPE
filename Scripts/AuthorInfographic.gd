@@ -1,6 +1,5 @@
 extends Sprite
 
-onready var author_icon = $AuthorIcon
 onready var author_icon_border = $AuthorIconBorder
 onready var author_username = $AuthorUsername
 onready var author_description = $AuthorDescription
@@ -17,8 +16,8 @@ func set_description(text: String):
 func set_icon(path: String) -> int:
 	var img: Image = Image.new()
 	var err = img.load("user://"+path)
-	if err != 0:
-		return err
+	if err != OK:
+		img.create(64, 64, false, Image.FORMAT_BPTC_RGBA)
 	var tex = ImageTexture.new()
 	img.resize(64, 64)
 	tex.create_from_image(img)
@@ -29,4 +28,4 @@ func set_icon(path: String) -> int:
 func setup_infographic():
 	author_username.text = global.author_username
 	author_description.text = global.author_description
-	set_icon("HFPE/%s" % global.author_icon)
+	var _err = set_icon("HFPE/%s" % global.author_icon)
