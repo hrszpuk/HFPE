@@ -53,6 +53,13 @@ var section_cache: String
 var character_cache: String
 var name_cache: String
 
+# Config Editor
+enum ConfigEditorFlags {
+	ALL_CACHE,
+	PALETTE_CACHE,
+	CONFIG_CACHE
+}
+
 func _ready() -> void:
 	directory() # Create directories
 	config() # Create/load HFPE/config.cfg
@@ -60,6 +67,15 @@ func _ready() -> void:
 	config_config = hf_config() # Create/cache and load config.cfg
 	palette_config = hf_palette() # Create/cache and load palette.cfg
 	return
+
+
+func flush_cache(flag: int) -> void:
+	if flag == ConfigEditorFlags.CONFIG_CACHE:
+		pass
+		# Open cache config
+		# write it to real config
+		
+	return 
 
 
 func hf_config() -> ConfigFile:
