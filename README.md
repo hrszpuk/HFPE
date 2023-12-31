@@ -1,7 +1,7 @@
 
-<h2 align="center">
+<h1 align="center">
     Hyperfight Palette Editor
-</h2>
+</h1>
 
 <p align="center">
     A graphical solution for creating and managing palettes for HYPERFIGHT.
